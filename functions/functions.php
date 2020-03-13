@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Shlinkio\Shlink\Common;
+namespace Shlinkio\Shlink\Config;
 
 use Laminas\Config\Factory;
 use Laminas\Stdlib\Glob;
