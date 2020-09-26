@@ -1,5 +1,3 @@
 parameters:
 	checkMissingIterableValueType: false
 	checkGenericClassInNonGenericObjectType: false
-	ignoreErrors:
-		- '#DottedAccessConfigAbstractFactory::__invoke#'
