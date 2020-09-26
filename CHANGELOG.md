@@ -13,6 +13,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com), and this 
 #### Changed
 
 * [#1](https://github.com/shlinkio/shlink-config/issues/1) Updated `infection` to v0.16.
+* Added PHP 8 to the build matrix, allowing failures on it.
 
 #### Deprecated
 
