@@ -1,10 +1,10 @@
 # Shlink config
 
 [![Build Status](https://img.shields.io/travis/shlinkio/shlink-config.svg?style=flat-square)](https://travis-ci.org/shlinkio/shlink-config)
-[![Code Coverage](https://img.shields.io/scrutinizer/coverage/g/shlinkio/shlink-config.svg?style=flat-square)](https://scrutinizer-ci.com/g/shlinkio/shlink-config/?branch=master)
-[![Scrutinizer Code Quality](https://img.shields.io/scrutinizer/g/shlinkio/shlink-config.svg?style=flat-square)](https://scrutinizer-ci.com/g/shlinkio/shlink-config/?branch=master)
+[![Code Coverage](https://img.shields.io/scrutinizer/coverage/g/shlinkio/shlink-config.svg?style=flat-square)](https://scrutinizer-ci.com/g/shlinkio/shlink-config/?branch=main)
+[![Scrutinizer Code Quality](https://img.shields.io/scrutinizer/g/shlinkio/shlink-config.svg?style=flat-square)](https://scrutinizer-ci.com/g/shlinkio/shlink-config/?branch=main)
 [![Latest Stable Version](https://img.shields.io/github/release/shlinkio/shlink-config.svg?style=flat-square)](https://packagist.org/packages/shlinkio/shlink-config)
-[![License](https://img.shields.io/github/license/shlinkio/shlink-config.svg?style=flat-square)](https://github.com/shlinkio/shlink-config/blob/master/LICENSE)
+[![License](https://img.shields.io/github/license/shlinkio/shlink-config.svg?style=flat-square)](https://github.com/shlinkio/shlink-config/blob/main/LICENSE)
 [![Paypal donate](https://img.shields.io/badge/Donate-paypal-blue.svg?style=flat-square&logo=paypal&colorA=aaaaaa)](https://slnk.to/donate)
 
 Utils to load, parse and work with configuration on Shlink project.
