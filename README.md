@@ -1,6 +1,6 @@
 # Shlink config
 
-[![Build Status](https://img.shields.io/travis/shlinkio/shlink-config.svg?style=flat-square)](https://travis-ci.org/shlinkio/shlink-config)
+[![Build Status](https://img.shields.io/travis/com/shlinkio/shlink-config.svg?style=flat-square)](https://travis-ci.com/shlinkio/shlink-config)
 [![Code Coverage](https://img.shields.io/scrutinizer/coverage/g/shlinkio/shlink-config.svg?style=flat-square)](https://scrutinizer-ci.com/g/shlinkio/shlink-config/?branch=main)
 [![Scrutinizer Code Quality](https://img.shields.io/scrutinizer/g/shlinkio/shlink-config.svg?style=flat-square)](https://scrutinizer-ci.com/g/shlinkio/shlink-config/?branch=main)
 [![Latest Stable Version](https://img.shields.io/github/release/shlinkio/shlink-config.svg?style=flat-square)](https://packagist.org/packages/shlinkio/shlink-config)
