@@ -12,16 +12,16 @@
         }
     ],
     "require": {
-        "php": "^7.4",
+        "php": "^7.4 || ^8.0",
         "laminas/laminas-config": "^3.3",
         "laminas/laminas-servicemanager": "^3.4"
     },
     "require-dev": {
-        "infection/infection": "^0.17.5",
-        "phpstan/phpstan": "^0.12.14",
-        "phpunit/phpunit": "^9.0.1",
+        "infection/infection": "^0.19.2",
+        "phpstan/phpstan": "^0.12.52",
+        "phpunit/phpunit": "^9.4",
         "roave/security-advisories": "dev-master",
-        "shlinkio/php-coding-standard": "~2.1.0"
+        "shlinkio/php-coding-standard": "~2.1.1"
     },
     "autoload": {
         "psr-4": {
