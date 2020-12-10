@@ -21,8 +21,8 @@ class ConfigProviderTest extends TestCase
     public function configIsReturned(): void
     {
         $config = ($this->configProvider)();
-        $this->assertArrayHasKey('dependencies', $config);
-        $this->assertEquals([
+        self::assertArrayHasKey('dependencies', $config);
+        self::assertEquals([
             'abstract_factories' => [
                 DottedAccessConfigAbstractFactory::class,
             ],
