@@ -32,7 +32,7 @@ class PathCollectionTest extends TestCase
      */
     public function pathExistsReturnsExpectedValue(array $path, bool $expected): void
     {
-        $this->assertEquals($expected, $this->collection->pathExists($path));
+        self::assertEquals($expected, $this->collection->pathExists($path));
     }
 
     public function providePaths(): iterable
@@ -54,7 +54,7 @@ class PathCollectionTest extends TestCase
      */
     public function getValueInPathReturnsExpectedValue(array $path, $expected): void
     {
-        $this->assertEquals($expected, $this->collection->getValueInPath($path));
+        self::assertEquals($expected, $this->collection->getValueInPath($path));
     }
 
     public function providePathsWithValue(): iterable

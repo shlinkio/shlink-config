@@ -25,7 +25,7 @@ class DottedAccessConfigAbstractFactoryTest extends TestCase
      */
     public function canCreateOnlyServicesWithDot(string $serviceName, bool $canCreate): void
     {
-        $this->assertEquals($canCreate, $this->factory->canCreate(new ServiceManager(), $serviceName));
+        self::assertEquals($canCreate, $this->factory->canCreate(new ServiceManager(), $serviceName));
     }
 
     public function provideDotNames(): iterable
@@ -64,7 +64,7 @@ class DottedAccessConfigAbstractFactoryTest extends TestCase
             ],
         ]]), $serviceName);
 
-        $this->assertEquals($expected, $result);
+        self::assertEquals($expected, $result);
     }
 
     public function provideDotValues(): iterable
