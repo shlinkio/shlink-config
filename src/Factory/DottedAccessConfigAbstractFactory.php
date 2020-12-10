@@ -10,6 +10,7 @@ use Laminas\ServiceManager\Exception\ServiceNotCreatedException;
 use Laminas\ServiceManager\Factory\AbstractFactoryInterface;
 use Shlinkio\Shlink\Config\Exception\InvalidArgumentException;
 
+use function array_key_exists;
 use function array_shift;
 use function explode;
 use function is_array;
@@ -57,7 +58,7 @@ class DottedAccessConfigAbstractFactory implements AbstractFactoryInterface
         $key = array_shift($keys);
 
         // As soon as one of the provided keys is not found, throw an exception
-        if (! isset($array[$key])) {
+        if (! array_key_exists($key, $array)) {
             throw new InvalidArgumentException(sprintf(
                 'The key "%s" provided in the dotted notation could not be found in the array service',
                 $key,

@@ -47,18 +47,30 @@ class DottedAccessConfigAbstractFactoryTest extends TestCase
         $this->factory->__invoke(new ServiceManager(), 'foo.bar');
     }
 
-    /** @test */
-    public function dottedNotationIsRecursivelyResolvedUntilLastValueIsFoundAndReturned(): void
-    {
-        $expected = 'this is the result';
-
+    /**
+     * @test
+     * @dataProvider provideDotValues
+     */
+    public function dottedNotationIsRecursivelyResolvedUntilLastValueIsFoundAndReturned(
+        string $serviceName,
+        ?string $expected
+    ): void {
         $result = $this->factory->__invoke(new ServiceManager(['services' => [
             'foo' => [
-                'bar' => ['baz' => $expected],
+                'bar' => [
+                    'baz' => 'this is the result',
+                    'nullable_baz' => null,
+                ],
             ],
-        ]]), 'foo.bar.baz');
+        ]]), $serviceName);
 
         $this->assertEquals($expected, $result);
+    }
+
+    public function provideDotValues(): iterable
+    {
+        yield 'non-null value' => ['foo.bar.baz', 'this is the result'];
+        yield 'null value' => ['foo.bar.nullable_baz', null];
     }
 
     /** @test */
