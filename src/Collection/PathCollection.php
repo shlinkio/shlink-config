@@ -83,6 +83,35 @@ final class PathCollection
         $ref[array_shift($path)] = $value;
     }
 
+    public function unsetPath(array $path): void
+    {
+        $placeholderTempValue = '__SHLINK_DELETABLE_PLACEHOLDER__';
+        $this->setValueInPath($placeholderTempValue, $path);
+        $this->recursiveUnset($this->array, function ($value, $key) use ($placeholderTempValue) {
+            if (is_array($value)) {
+                return empty($value);
+            }
+            return $value === $placeholderTempValue;
+        });
+    }
+
+    /**
+     * @return mixed
+     */
+    private function recursiveUnset(array &$array, callable $callback)
+    {
+        foreach ($array as $key => &$value) {
+            if (is_array($value)) {
+                $value = $this->recursiveUnset($value, $callback);
+            }
+            if ($callback($value, $key)) {
+                unset($array[$key]);
+            }
+        }
+
+        return $array;
+    }
+
     public function toArray(): array
     {
         return $this->array;
