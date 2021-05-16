@@ -17,9 +17,9 @@
         "laminas/laminas-servicemanager": "^3.4"
     },
     "require-dev": {
-        "infection/infection": "^0.20",
-        "phpstan/phpstan": "^0.12.52",
-        "phpunit/phpunit": "^9.4",
+        "infection/infection": "^0.23.0",
+        "phpstan/phpstan": "^0.12.87",
+        "phpunit/phpunit": "^9.5.4",
         "roave/security-advisories": "dev-master",
         "shlinkio/php-coding-standard": "~2.1.1"
     },
