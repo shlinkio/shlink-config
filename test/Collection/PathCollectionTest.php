@@ -9,21 +9,24 @@ use Shlinkio\Shlink\Config\Collection\PathCollection;
 
 class PathCollectionTest extends TestCase
 {
+    private const INITIAL_ARRAY = [
+        'foo' => [
+            'bar' => [
+                'baz' => 'Hello world!',
+            ],
+            'other' => 123,
+        ],
+        'something' => [],
+        'another' => [
+            'one' => 'Shlink',
+        ],
+    ];
+
     private PathCollection $collection;
 
     public function setUp(): void
     {
-        $this->collection = new PathCollection([
-            'foo' => [
-                'bar' => [
-                    'baz' => 'Hello world!',
-                ],
-            ],
-            'something' => [],
-            'another' => [
-                'one' => 'Shlink',
-            ],
-        ]);
+        $this->collection = new PathCollection(self::INITIAL_ARRAY);
     }
 
     /**
@@ -67,11 +70,76 @@ class PathCollectionTest extends TestCase
             'bar' => [
                 'baz' => 'Hello world!',
             ],
+            'other' => 123,
         ]];
         yield [['foo', 'bar'], [
             'baz' => 'Hello world!',
         ]];
         yield [['foo', 'bar', 'baz'], 'Hello world!'];
         yield [['something'], []];
+    }
+
+    /**
+     * @test
+     * @dataProvider providePathsToUnset
+     */
+    public function unsetPathHasExpectedResult(array $path, array $expectedResult): void
+    {
+        $this->collection->unsetPath($path);
+        self::assertEquals($expectedResult, $this->collection->toArray());
+    }
+
+    public function providePathsToUnset(): iterable
+    {
+        yield [['bar', 'foo'], self::INITIAL_ARRAY];
+        yield [['foo', 'bar'], [
+            'foo' => [
+                'other' => 123,
+            ],
+            'something' => [],
+            'another' => [
+                'one' => 'Shlink',
+            ],
+        ]];
+        yield [['foo', 'bar', 'baz'], [
+            'foo' => [
+                'other' => 123,
+            ],
+            'something' => [],
+            'another' => [
+                'one' => 'Shlink',
+            ],
+        ]];
+        yield [['something'], [
+            'foo' => [
+                'bar' => [
+                    'baz' => 'Hello world!',
+                ],
+                'other' => 123,
+            ],
+            'another' => [
+                'one' => 'Shlink',
+            ],
+        ]];
+        yield [['foo', 'other'], [
+            'foo' => [
+                'bar' => [
+                    'baz' => 'Hello world!',
+                ],
+            ],
+            'something' => [],
+            'another' => [
+                'one' => 'Shlink',
+            ],
+        ]];
+        yield [['another', 'one'], [
+            'foo' => [
+                'bar' => [
+                    'baz' => 'Hello world!',
+                ],
+                'other' => 123,
+            ],
+            'something' => [],
+        ]];
     }
 }

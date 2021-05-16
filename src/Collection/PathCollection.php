@@ -7,6 +7,7 @@ namespace Shlinkio\Shlink\Config\Collection;
 use function array_key_exists;
 use function array_shift;
 use function count;
+use function in_array;
 use function is_array;
 
 final class PathCollection
@@ -87,8 +88,8 @@ final class PathCollection
     {
         $placeholderTempValue = '__SHLINK_DELETABLE_PLACEHOLDER__';
         $this->setValueInPath($placeholderTempValue, $path);
-        $this->recursiveUnset($this->array, function ($value, $key) use ($placeholderTempValue) {
-            if (is_array($value)) {
+        $this->recursiveUnset($this->array, function ($value, $key) use ($placeholderTempValue, $path) {
+            if (is_array($value) && in_array($key, $path, true)) {
                 return empty($value);
             }
             return $value === $placeholderTempValue;
