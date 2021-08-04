@@ -12,11 +12,8 @@ use function is_array;
 
 final class PathCollection
 {
-    private array $array;
-
-    public function __construct(array $array = [])
+    public function __construct(private array $array = [])
     {
-        $this->array = $array;
     }
 
     public function pathExists(array $path): bool
@@ -46,10 +43,7 @@ final class PathCollection
         return $this->checkPathExists($path, $newArray);
     }
 
-    /**
-     * @return mixed
-     */
-    public function getValueInPath(array $path)
+    public function getValueInPath(array $path): mixed
     {
         $array = $this->array;
 
@@ -65,10 +59,7 @@ final class PathCollection
         return $array;
     }
 
-    /**
-     * @param mixed $value
-     */
-    public function setValueInPath($value, array $path): void
+    public function setValueInPath(mixed $value, array $path): void
     {
         $ref =& $this->array;
 
@@ -96,10 +87,7 @@ final class PathCollection
         });
     }
 
-    /**
-     * @return mixed
-     */
-    private function recursiveUnset(array &$array, callable $callback)
+    private function recursiveUnset(array &$array, callable $callback): mixed
     {
         foreach ($array as $key => &$value) {
             if (is_array($value)) {
