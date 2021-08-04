@@ -4,6 +4,24 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com), and this project adheres to [Semantic Versioning](https://semver.org).
 
+## [Unreleased]
+### Added
+* *Nothing*
+
+### Changed
+* Increased required phpstan level to 8
+* Added experimental builds under PHP 8.1
+
+### Deprecated
+* *Nothing*
+
+### Removed
+* Dropped support for PHP 7.4
+
+### Fixed
+* *Nothing*
+
+
 ## [1.2.0] - 2021-05-16
 ### Added
 * Added new `PathCollection::unsetPath` method to recursively unset a specific path.

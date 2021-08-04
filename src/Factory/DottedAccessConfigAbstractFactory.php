@@ -25,13 +25,10 @@ class DottedAccessConfigAbstractFactory implements AbstractFactoryInterface
     }
 
     /**
-     * Create an object
-     *
      * @param string $requestedName
-     * @return mixed|null
      */
     // phpcs:ignore
-    public function __invoke(ContainerInterface $container, $requestedName, ?array $options = null)
+    public function __invoke(ContainerInterface $container, $requestedName, ?array $options = null): mixed
     {
         $parts = explode('.', $requestedName);
         $serviceName = array_shift($parts);
@@ -48,17 +45,14 @@ class DottedAccessConfigAbstractFactory implements AbstractFactoryInterface
     }
 
     /**
-     * @param array $keys
-     * @param array|\ArrayAccess $array
-     * @return mixed|null
-     * @throws  InvalidArgumentException
+     * @throws InvalidArgumentException
      */
-    private function readKeysFromArray(array $keys, $array)
+    private function readKeysFromArray(array $keys, array|ArrayAccess $array): mixed
     {
         $key = array_shift($keys);
 
         // As soon as one of the provided keys is not found, throw an exception
-        if (! array_key_exists($key, $array)) {
+        if (! $this->keyExists($key, $array)) {
             throw new InvalidArgumentException(sprintf(
                 'The key "%s" provided in the dotted notation could not be found in the array service',
                 $key,
@@ -71,5 +65,10 @@ class DottedAccessConfigAbstractFactory implements AbstractFactoryInterface
         }
 
         return $value;
+    }
+
+    private function keyExists(string $key, array|ArrayAccess $array): bool
+    {
+        return is_array($array) ? array_key_exists($key, $array) : $array->offsetExists($key);
     }
 }

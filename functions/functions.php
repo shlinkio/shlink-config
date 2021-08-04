@@ -12,5 +12,7 @@ use Laminas\Stdlib\Glob;
  */
 function loadConfigFromGlob(string $globPattern): array
 {
-    return Factory::fromFiles(Glob::glob($globPattern, Glob::GLOB_BRACE));
+    /** @var array $config */
+    $config = Factory::fromFiles(Glob::glob($globPattern, Glob::GLOB_BRACE));
+    return $config;
 }
