@@ -53,7 +53,7 @@ class DottedAccessConfigAbstractFactoryTest extends TestCase
      */
     public function dottedNotationIsRecursivelyResolvedUntilLastValueIsFoundAndReturned(
         string $serviceName,
-        ?string $expected
+        ?string $expected,
     ): void {
         $result = $this->factory->__invoke(new ServiceManager(['services' => [
             'foo' => [

@@ -51,11 +51,10 @@ class PathCollectionTest extends TestCase
     }
 
     /**
-     * @param mixed $expected
      * @test
      * @dataProvider providePathsWithValue
      */
-    public function getValueInPathReturnsExpectedValue(array $path, $expected): void
+    public function getValueInPathReturnsExpectedValue(array $path, mixed $expected): void
     {
         self::assertEquals($expected, $this->collection->getValueInPath($path));
     }
