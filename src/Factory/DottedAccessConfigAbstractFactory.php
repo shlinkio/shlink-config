@@ -28,7 +28,7 @@ class DottedAccessConfigAbstractFactory implements AbstractFactoryInterface
      * @param string $requestedName
      */
     // phpcs:ignore
-    public function __invoke(ContainerInterface $container, $requestedName, ?array $options = null): object
+    public function __invoke(ContainerInterface $container, $requestedName, ?array $options = null): mixed
     {
         $parts = explode('.', $requestedName);
         $serviceName = array_shift($parts);
@@ -49,13 +49,13 @@ class DottedAccessConfigAbstractFactory implements AbstractFactoryInterface
             ));
         }
 
-        return $this->readKeysFromArray($parts, $array);
+        return $this->readKeysFromArray($parts, $array); // @phpstan-ignore-line
     }
 
     /**
      * @throws InvalidArgumentException
      */
-    private function readKeysFromArray(array $keys, array|ArrayAccess $array): object
+    private function readKeysFromArray(array $keys, array|ArrayAccess $array): mixed
     {
         $key = array_shift($keys);
 
