@@ -4,14 +4,15 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com), and this project adheres to [Semantic Versioning](https://semver.org).
 
-## [Unreleased]
+## [1.3.0] - 2021-11-01
 ### Added
 * *Nothing*
 
 ### Changed
-* Increased required phpstan level to 8
+* Increased required phpstan level to 9
 * Added experimental builds under PHP 8.1
 * Moved ci workflow to external repo and reused
+* Updated to phpstan 1.0
 
 ### Deprecated
 * *Nothing*

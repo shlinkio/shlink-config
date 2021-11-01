@@ -9,6 +9,7 @@ use Laminas\ServiceManager\ServiceManager;
 use PHPUnit\Framework\TestCase;
 use Shlinkio\Shlink\Config\Exception\InvalidArgumentException;
 use Shlinkio\Shlink\Config\Factory\DottedAccessConfigAbstractFactory;
+use stdClass;
 
 class DottedAccessConfigAbstractFactoryTest extends TestCase
 {
@@ -49,28 +50,45 @@ class DottedAccessConfigAbstractFactoryTest extends TestCase
 
     /**
      * @test
-     * @dataProvider provideDotValues
+     * @dataProvider provideNonArrayValues
      */
-    public function dottedNotationIsRecursivelyResolvedUntilLastValueIsFoundAndReturned(
-        string $serviceName,
-        ?string $expected,
-    ): void {
-        $result = $this->factory->__invoke(new ServiceManager(['services' => [
-            'foo' => [
-                'bar' => [
-                    'baz' => 'this is the result',
-                    'nullable_baz' => null,
-                ],
-            ],
-        ]]), $serviceName);
+    public function throwsExceptionWhenFirstPartOfTheServiceDoesNotResultInAnArray(mixed $value): void
+    {
+        $this->expectException(ServiceNotCreatedException::class);
+        $this->expectExceptionMessage(
+            'Defined service "a" does not return an array or ArrayAccess after resolving dotted expression "a.bar".',
+        );
 
-        self::assertEquals($expected, $result);
+        $this->factory->__invoke(new ServiceManager(['services' => [
+            'a' => $value,
+        ]]), 'a.bar');
     }
 
-    public function provideDotValues(): iterable
+    public function provideNonArrayValues(): iterable
     {
-        yield 'non-null value' => ['foo.bar.baz', 'this is the result'];
-        yield 'null value' => ['foo.bar.nullable_baz', null];
+        yield 'string' => ['string'];
+        yield 'object' => [new stdClass()];
+        yield 'true' => [true];
+        yield 'false' => [false];
+        yield 'number' => [100];
+    }
+
+    /** @test */
+    public function dottedNotationIsRecursivelyResolvedUntilLastValueIsFoundAndReturned(): void
+    {
+        $a = new stdClass();
+        $b = new stdClass();
+        $sm = new ServiceManager(['services' => [
+            'foo' => [
+                'bar' => [
+                    'baz' => $a,
+                    'biz' => $b,
+                ],
+            ],
+        ]]);
+
+        self::assertSame($a, $this->factory->__invoke($sm, 'foo.bar.baz'));
+        self::assertSame($b, $this->factory->__invoke($sm, 'foo.bar.biz'));
     }
 
     /** @test */
