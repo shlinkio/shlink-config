@@ -13,12 +13,12 @@
     ],
     "require": {
         "php": "^8.0",
-        "laminas/laminas-config": "^3.5",
-        "laminas/laminas-servicemanager": "^3.7"
+        "laminas/laminas-config": "^3.7",
+        "laminas/laminas-servicemanager": "^3.10"
     },
     "require-dev": {
         "infection/infection": "^0.25",
-        "phpstan/phpstan": "^0.12.94",
+        "phpstan/phpstan": "^1.0",
         "phpunit/phpunit": "^9.5.4",
         "roave/security-advisories": "dev-master",
         "shlinkio/php-coding-standard": "~2.2.0"
@@ -45,7 +45,7 @@
         ],
         "cs": "phpcs",
         "cs:fix": "phpcbf",
-        "stan": "phpstan analyse src functions --level=8",
+        "stan": "phpstan analyse src functions --level=9",
         "test": "phpdbg -qrr vendor/bin/phpunit --order-by=random --testdox --colors=always",
         "test:ci": "@test --coverage-clover=build/clover.xml --coverage-xml=build/coverage-xml --log-junit=build/junit.xml",
         "test:pretty": "@test --coverage-html build/coverage-html",

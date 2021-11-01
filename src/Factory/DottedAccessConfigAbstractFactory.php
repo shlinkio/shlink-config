@@ -28,7 +28,7 @@ class DottedAccessConfigAbstractFactory implements AbstractFactoryInterface
      * @param string $requestedName
      */
     // phpcs:ignore
-    public function __invoke(ContainerInterface $container, $requestedName, ?array $options = null): mixed
+    public function __invoke(ContainerInterface $container, $requestedName, ?array $options = null): object
     {
         $parts = explode('.', $requestedName);
         $serviceName = array_shift($parts);
@@ -41,13 +41,21 @@ class DottedAccessConfigAbstractFactory implements AbstractFactoryInterface
         }
 
         $array = $container->get($serviceName);
+        if (! is_array($array) && ! $array instanceof ArrayAccess) {
+            throw new ServiceNotCreatedException(sprintf(
+                'Defined service "%s" does not return an array or ArrayAccess after resolving dotted expression "%s".',
+                $serviceName,
+                $requestedName,
+            ));
+        }
+
         return $this->readKeysFromArray($parts, $array);
     }
 
     /**
      * @throws InvalidArgumentException
      */
-    private function readKeysFromArray(array $keys, array|ArrayAccess $array): mixed
+    private function readKeysFromArray(array $keys, array|ArrayAccess $array): object
     {
         $key = array_shift($keys);
 
