@@ -4,6 +4,23 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com), and this project adheres to [Semantic Versioning](https://semver.org).
 
+## [1.5.0] - 2022-01-01
+### Added
+* Added `env` function from `shlinkio/shlink-common` package.
+
+### Changed
+* *Nothing*
+
+### Deprecated
+* *Nothing*
+
+### Removed
+* *Nothing*
+
+### Fixed
+* *Nothing*
+
+
 ## [1.4.0] - 2021-12-05
 ### Added
 * Created new factory to tell if either swoole or openswoole are enabled
