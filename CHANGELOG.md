@@ -4,6 +4,24 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com), and this project adheres to [Semantic Versioning](https://semver.org).
 
+## [Unreleased]
+### Added
+* *Nothing*
+
+### Changed
+* Updated to infection 0.26, enabling HTML reports.
+* Added explicitly enabled composer plugins to composer.json.
+
+### Deprecated
+* *Nothing*
+
+### Removed
+* *Nothing*
+
+### Fixed
+* *Nothing*
+
+
 ## [1.5.0] - 2022-01-01
 ### Added
 * Added `env` function from `shlinkio/shlink-common` package.
