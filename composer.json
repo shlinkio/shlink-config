@@ -17,7 +17,7 @@
         "laminas/laminas-servicemanager": "^3.10"
     },
     "require-dev": {
-        "infection/infection": "^0.25",
+        "infection/infection": "^0.26",
         "phpstan/phpstan": "^1.0",
         "phpunit/phpunit": "^9.5.4",
         "roave/security-advisories": "dev-master",
@@ -73,6 +73,10 @@
         "infect:show:ci": "<fg=blue;options=bold>Checks unit tests quality applying mutation testing with existing reports and logs and shows applied mutators</>"
     },
     "config": {
-        "sort-packages": true
+        "sort-packages": true,
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true,
+            "infection/extension-installer": true
+        }
     }
 }
