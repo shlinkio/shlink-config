@@ -6,7 +6,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com), and this 
 
 ## [Unreleased]
 ### Added
-* *Nothing*
+* Added `EnvVarLoaderProvider` that loads generated config as env vars.
 
 ### Changed
 * Updated to infection 0.26, enabling HTML reports.

@@ -49,7 +49,7 @@ class DottedAccessConfigAbstractFactory implements AbstractFactoryInterface
             ));
         }
 
-        return $this->readKeysFromArray($parts, $array); // @phpstan-ignore-line
+        return $this->readKeysFromArray($parts, $array);
     }
 
     /**
