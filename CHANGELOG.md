@@ -13,7 +13,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com), and this 
 * Added explicitly enabled composer plugins to composer.json.
 
 ### Deprecated
-* *Nothing*
+* Deprecated check for regular swoole extension.
 
 ### Removed
 * *Nothing*
