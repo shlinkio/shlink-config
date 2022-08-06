@@ -10,7 +10,7 @@ use function Shlinkio\Shlink\Config\putNotYetDefinedEnv;
 
 class EnvVarLoaderProvider
 {
-    public function __construct(private string $configPath, private ?array $allowedEnvVars = null)
+    public function __construct(private readonly string $configPath, private readonly ?array $allowedEnvVars = null)
     {
     }
 

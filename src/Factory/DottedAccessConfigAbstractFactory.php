@@ -15,13 +15,13 @@ use function array_shift;
 use function explode;
 use function is_array;
 use function sprintf;
-use function substr_count;
+use function str_contains;
 
 class DottedAccessConfigAbstractFactory implements AbstractFactoryInterface
 {
     public function canCreate(ContainerInterface $container, $requestedName): bool // phpcs:ignore
     {
-        return substr_count($requestedName, '.') > 0;
+        return str_contains($requestedName, '.');
     }
 
     /**
