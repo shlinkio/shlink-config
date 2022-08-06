@@ -12,16 +12,16 @@
         }
     ],
     "require": {
-        "php": "^8.0",
+        "php": "^8.1",
         "laminas/laminas-config": "^3.7",
-        "laminas/laminas-servicemanager": "^3.10"
+        "laminas/laminas-servicemanager": "^3.16"
     },
     "require-dev": {
         "infection/infection": "^0.26",
-        "phpstan/phpstan": "^1.0",
-        "phpunit/phpunit": "^9.5.4",
+        "phpstan/phpstan": "^1.8",
+        "phpunit/phpunit": "^9.5",
         "roave/security-advisories": "dev-master",
-        "shlinkio/php-coding-standard": "~2.2.0"
+        "shlinkio/php-coding-standard": "~2.3.0"
     },
     "autoload": {
         "psr-4": {
@@ -49,7 +49,7 @@
         "test": "phpdbg -qrr vendor/bin/phpunit --order-by=random --testdox --colors=always",
         "test:ci": "@test --coverage-clover=build/clover.xml --coverage-xml=build/coverage-xml --log-junit=build/junit.xml",
         "test:pretty": "@test --coverage-html build/coverage-html",
-        "infect": "infection --threads=4 --min-msi=85 --log-verbosity=default --only-covered --only-covering-test-cases",
+        "infect": "infection --threads=4 --min-msi=80 --log-verbosity=default --only-covered --only-covering-test-cases",
         "infect:ci": "@infect --coverage=build --skip-initial-tests",
         "infect:show": "@infect --show-mutations",
         "infect:show:ci": "@infect --show-mutations --coverage=build",

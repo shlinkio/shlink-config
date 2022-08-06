@@ -20,5 +20,5 @@ Install this tool using [composer](https://getcomposer.org/).
 ## Included utils
 
 * `loadConfigFromGlob`: Function which expects a glob pattern and loads and merges all config files that match it.
-* `PathCollection`: Wraps a configuration array and lets you manipulate it using config paths. You can check if certain path exists, or get/set the value in certain path.
 * `DottedAccessConfigAbstractFactory`: An abstract factory that lets any config param to be fetched as a service by using the `config.foo.bar` notation.
+* `EnvVarLoaderProvider`: A config provider which loads the entries of the loaded config into env vars and always returns empty. Designed to be the first config provider in the pipeline.
