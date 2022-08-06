@@ -21,3 +21,4 @@ Install this tool using [composer](https://getcomposer.org/).
 
 * `loadConfigFromGlob`: Function which expects a glob pattern and loads and merges all config files that match it.
 * `DottedAccessConfigAbstractFactory`: An abstract factory that lets any config param to be fetched as a service by using the `config.foo.bar` notation.
+* `EnvVarLoaderProvider`: A config provider which loads the entries of the loaded config into env vars and always returns empty. Designed to be the first config provider in the pipeline.
