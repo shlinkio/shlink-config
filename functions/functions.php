@@ -7,6 +7,7 @@ namespace Shlinkio\Shlink\Config;
 use Laminas\Config\Factory;
 use Laminas\Stdlib\Glob;
 
+use function extension_loaded;
 use function getenv;
 use function implode;
 use function is_array;
@@ -52,4 +53,10 @@ function putNotYetDefinedEnv(string $key, mixed $value): void
         default => (string) $value,
     };
     putenv(sprintf('%s=%s', $key, $normalizedValue));
+}
+
+function swooleIsInstalled(): bool
+{
+    // TODO regular swoole support is deprecated. Stop checking for it once Shlink v4.0.0 is released
+    return extension_loaded('openswoole') || extension_loaded('swoole');
 }
