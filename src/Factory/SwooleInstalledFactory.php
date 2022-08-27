@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Shlinkio\Shlink\Config\Factory;
 
-use function Shlinkio\Shlink\Config\swooleIsInstalled;
+use function Shlinkio\Shlink\Config\openswooleIsInstalled;
 
 class SwooleInstalledFactory
 {
@@ -12,6 +12,6 @@ class SwooleInstalledFactory
 
     public function __invoke(): callable
     {
-        return swooleIsInstalled(...);
+        return openswooleIsInstalled(...);
     }
 }

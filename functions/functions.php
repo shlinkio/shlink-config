@@ -17,6 +17,8 @@ use function sprintf;
 use function strtolower;
 use function trim;
 
+use const PHP_SAPI;
+
 function loadConfigFromGlob(string $globPattern): array
 {
     /** @var array $config */
@@ -55,8 +57,18 @@ function putNotYetDefinedEnv(string $key, mixed $value): void
     putenv(sprintf('%s=%s', $key, $normalizedValue));
 }
 
-function swooleIsInstalled(): bool
+function openswooleIsInstalled(): bool
 {
     // TODO regular swoole support is deprecated. Stop checking for it once Shlink v4.0.0 is released
     return extension_loaded('openswoole') || extension_loaded('swoole');
+}
+
+function runningInOpenswoole(): bool
+{
+    return PHP_SAPI === 'cli' && env('OPENSWOOLE_VERSION') !== null && openswooleIsInstalled();
+}
+
+function runningInRoadRunner(): bool
+{
+    return PHP_SAPI === 'cli' && env('RR_MODE') !== null;
 }
