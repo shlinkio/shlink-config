@@ -12,11 +12,14 @@ use function getenv;
 use function implode;
 use function is_array;
 use function is_scalar;
+use function lcfirst;
 use function putenv;
 use function sprintf;
+use function str_replace;
 use function strtolower;
 use function trim;
 
+use function ucwords;
 use const PHP_SAPI;
 
 function loadConfigFromGlob(string $globPattern): array
@@ -55,6 +58,11 @@ function putNotYetDefinedEnv(string $key, mixed $value): void
         default => (string) $value,
     };
     putenv(sprintf('%s=%s', $key, $normalizedValue));
+}
+
+function snakeCaseToCamelCase(string $value): string
+{
+    return lcfirst(str_replace(' ', '', ucwords(str_replace('_', ' ', $value))));
 }
 
 function openswooleIsInstalled(): bool
