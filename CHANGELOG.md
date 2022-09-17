@@ -7,6 +7,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com), and this 
 ## [Unreleased]
 ### Added
 * Created global function to check if swoole is installed
+* Created new `ValinorConfigFactory` to map arrays into immutable objects with implicit validation
 
 ### Changed
 * *Nothing*
