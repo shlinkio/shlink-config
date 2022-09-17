@@ -27,7 +27,7 @@ class ValinorConfigFactory
         $options = $container->get($name);
 
         return $mapper->map($serviceName, Source::array(array_combine(
-            array_map(snakeCaseToCamelCase(...), array_keys($options)),
+            array_map(snakeCaseToCamelCase(...), array_keys($options)), // @phpstan-ignore-line
             array_values($options),
         )));
     }

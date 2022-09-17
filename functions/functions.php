@@ -18,8 +18,8 @@ use function sprintf;
 use function str_replace;
 use function strtolower;
 use function trim;
-
 use function ucwords;
+
 use const PHP_SAPI;
 
 function loadConfigFromGlob(string $globPattern): array
