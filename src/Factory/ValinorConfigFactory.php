@@ -10,12 +10,6 @@ use CuyZ\Valinor\MapperBuilder;
 use Psr\Container\ContainerInterface;
 use Psr\SimpleCache\CacheInterface;
 
-use function array_combine;
-use function array_keys;
-use function array_map;
-use function array_values;
-use function Shlinkio\Shlink\Config\snakeCaseToCamelCase;
-
 class ValinorConfigFactory
 {
     public static function __callStatic(string $name, array $arguments): mixed
@@ -26,10 +20,7 @@ class ValinorConfigFactory
         $mapper = self::getMapper($container);
         $options = $container->get($name);
 
-        return $mapper->map($serviceName, Source::array(array_combine(
-            array_map(snakeCaseToCamelCase(...), array_keys($options)), // @phpstan-ignore-line
-            array_values($options),
-        )));
+        return $mapper->map($serviceName, Source::array($options)->camelCaseKeys());
     }
 
     private static function getMapper(ContainerInterface $container): TreeMapper

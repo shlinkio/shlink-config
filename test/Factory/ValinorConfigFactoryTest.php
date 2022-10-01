@@ -58,6 +58,16 @@ class ValinorConfigFactoryTest extends TestCase
             self::assertEquals(['foo', 'bar'], $model->listOfStuff);
             self::assertEquals([5.5, 8.3], $model->listOfNumbers);
         }];
+        yield 'camelCase mapping' => [[
+            'foo' => 'bar',
+            'with_camel_case' => 200,
+            'list of stuff' => ['foo', 'bar'],
+            'list-of-numbers' => [5.5, 8.3],
+        ], 'foo', function (FooModel $model): void {
+            self::assertEquals('bar', $model->foo);
+            self::assertEquals(['foo', 'bar'], $model->listOfStuff);
+            self::assertEquals([5.5, 8.3], $model->listOfNumbers);
+        }];
     }
 
     /**

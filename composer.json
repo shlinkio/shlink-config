@@ -18,12 +18,14 @@
         "laminas/laminas-servicemanager": "^3.16"
     },
     "require-dev": {
+        "devster/ubench": "^2.1",
         "infection/infection": "^0.26.15",
         "phpstan/phpstan": "^1.8",
         "phpunit/phpunit": "^9.5",
         "psr/simple-cache": "^2.0",
         "roave/security-advisories": "dev-master",
-        "shlinkio/php-coding-standard": "~2.3.0"
+        "shlinkio/php-coding-standard": "~2.3.0",
+        "symfony/var-dumper": "^6.1"
     },
     "autoload": {
         "psr-4": {
@@ -51,7 +53,7 @@
         "test": "phpdbg -qrr vendor/bin/phpunit --order-by=random --testdox --colors=always",
         "test:ci": "@test --coverage-clover=build/clover.xml --coverage-xml=build/coverage-xml --log-junit=build/junit.xml",
         "test:pretty": "@test --coverage-html build/coverage-html",
-        "infect": "infection --threads=max --min-msi=80 --log-verbosity=default --only-covered --only-covering-test-cases",
+        "infect": "infection --threads=max --min-msi=85 --log-verbosity=default --only-covered --only-covering-test-cases",
         "infect:ci": "@infect --coverage=build --skip-initial-tests",
         "infect:show": "@infect --show-mutations",
         "infect:show:ci": "@infect --show-mutations --coverage=build",
