@@ -11,6 +11,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com), and this 
 ### Changed
 * Migrated infection config to json5
 * Used native valinor logic to convert keys to camelCase before mapping.
+* Updated to valinor 0.15.
 
 ### Deprecated
 * *Nothing*
