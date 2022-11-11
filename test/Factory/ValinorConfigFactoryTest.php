@@ -40,15 +40,6 @@ class ValinorConfigFactoryTest extends TestCase
             self::assertEmpty($model->listOfStuff);
             self::assertEmpty($model->listOfNumbers);
         }];
-        yield 'implicit conversion' => [[
-            'foo' => 'the_value',
-            'with_camel_case' => 200,
-            'bar' => 'true',
-        ], 'something', function (FooModel $model): void {
-            self::assertEquals('the_value', $model->foo);
-            self::assertEquals(200, $model->withCamelCase);
-            self::assertTrue($model->bar);
-        }];
         yield 'lists' => [[
             'foo' => 'bar',
             'listOfStuff' => ['foo', 'bar'],

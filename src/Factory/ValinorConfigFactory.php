@@ -30,7 +30,7 @@ class ValinorConfigFactory
             return $mapper;
         }
 
-        $mapper = (new MapperBuilder())->flexible();
+        $mapper = (new MapperBuilder())->allowSuperfluousKeys();
         if ($container->has(CacheInterface::class)) {
             return $mapper = $mapper->withCache($container->get(CacheInterface::class))->mapper();
         }
