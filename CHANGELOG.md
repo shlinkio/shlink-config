@@ -9,7 +9,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com), and this 
 * *Nothing*
 
 ### Changed
-* Updated to valinor 0.17 and changed ValinorConfigFactory to only allow superfuous keys.
+* [#22](https://github.com/shlinkio/shlink-config/issues/22) Updated to valinor 0.17 and changed ValinorConfigFactory to only allow superfuous keys.
 
 ### Deprecated
 * *Nothing*
