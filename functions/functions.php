@@ -7,16 +7,25 @@ namespace Shlinkio\Shlink\Config;
 use Laminas\Config\Factory;
 use Laminas\Stdlib\Glob;
 
+use function array_combine;
+use function array_filter;
+use function array_keys;
+use function array_map;
+use function array_values;
 use function extension_loaded;
 use function getenv;
 use function implode;
 use function is_array;
+use function is_numeric;
 use function is_scalar;
 use function putenv;
 use function sprintf;
+use function str_replace;
+use function str_starts_with;
 use function strtolower;
 use function trim;
 
+use const ARRAY_FILTER_USE_KEY;
 use const PHP_SAPI;
 
 function loadConfigFromGlob(string $globPattern): array
@@ -29,16 +38,17 @@ function loadConfigFromGlob(string $globPattern): array
 function env(string $key, mixed $default = null): mixed
 {
     $value = getenv($key);
-    if ($value === false) {
-        return $default;
-    }
+    return $value === false ? $default : parseEnvVar($value);
+}
 
+function parseEnvVar(string $value): string|int|bool|null
+{
     return match (strtolower($value)) {
         'true', '(true)' => true,
         'false', '(false)' => false,
         'empty', '(empty)' => '',
         'null', '(null)' => null,
-        default => trim($value),
+        default => is_numeric($value) ? (int) $value : trim($value),
     };
 }
 
@@ -55,6 +65,17 @@ function putNotYetDefinedEnv(string $key, mixed $value): void
         default => (string) $value,
     };
     putenv(sprintf('%s=%s', $key, $normalizedValue));
+}
+
+function getOpenswooleConfigFromEnv(): array
+{
+    $swoolePrefix = 'OPENSWOOLE_';
+    $env = getenv();
+    $env = array_filter($env, static fn (string $key) => str_starts_with($key, $swoolePrefix), ARRAY_FILTER_USE_KEY);
+    $keys = array_map(static fn (string $key) => strtolower(str_replace($swoolePrefix, '', $key)), array_keys($env));
+    $values = array_map(parseEnvVar(...), array_values($env));
+
+    return array_combine($keys, $values);
 }
 
 function openswooleIsInstalled(): bool
