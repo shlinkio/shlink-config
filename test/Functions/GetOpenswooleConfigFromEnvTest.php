@@ -18,6 +18,7 @@ class GetOpenswooleConfigFromEnvTest extends TestCase
         putenv('OPENSWOOLE_PACKAGE_MAX_LENGTH=1000000');
         putenv('OPENSWOOLE_MAX_CONN=8888');
         putenv('OPENSWOOLE_TASK_ENABLE_COROUTINE=true');
+        putenv('OPENSWOOLE_VERSION=22.0.0');
     }
 
     public static function tearDownAfterClass(): void
@@ -27,6 +28,7 @@ class GetOpenswooleConfigFromEnvTest extends TestCase
         putenv('OPENSWOOLE_PACKAGE_MAX_LENGTH');
         putenv('OPENSWOOLE_MAX_CONN');
         putenv('OPENSWOOLE_TASK_ENABLE_COROUTINE');
+        putenv('OPENSWOOLE_VERSION');
     }
 
     /** @test */

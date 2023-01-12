@@ -28,6 +28,8 @@ use function trim;
 use const ARRAY_FILTER_USE_KEY;
 use const PHP_SAPI;
 
+const OPENSWOOLE_VERSION_ENV = 'OPENSWOOLE_VERSION';
+
 function loadConfigFromGlob(string $globPattern): array
 {
     /** @var array $config */
@@ -71,7 +73,11 @@ function getOpenswooleConfigFromEnv(): array
 {
     $swoolePrefix = 'OPENSWOOLE_';
     $env = getenv();
-    $env = array_filter($env, static fn (string $key) => str_starts_with($key, $swoolePrefix), ARRAY_FILTER_USE_KEY);
+    $env = array_filter(
+        $env,
+        static fn (string $key) => str_starts_with($key, $swoolePrefix) && $key !== OPENSWOOLE_VERSION_ENV,
+        ARRAY_FILTER_USE_KEY,
+    );
     $keys = array_map(static fn (string $key) => strtolower(str_replace($swoolePrefix, '', $key)), array_keys($env));
     $values = array_map(parseEnvVar(...), array_values($env));
 
@@ -86,7 +92,7 @@ function openswooleIsInstalled(): bool
 
 function runningInOpenswoole(): bool
 {
-    return PHP_SAPI === 'cli' && env('OPENSWOOLE_VERSION') !== null && openswooleIsInstalled();
+    return PHP_SAPI === 'cli' && env(OPENSWOOLE_VERSION_ENV) !== null && openswooleIsInstalled();
 }
 
 function runningInRoadRunner(): bool
