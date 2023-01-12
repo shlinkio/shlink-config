@@ -9,7 +9,7 @@ use PHPUnit\Framework\TestCase;
 use function putenv;
 use function Shlinkio\Shlink\Config\env;
 
-class FunctionsTest extends TestCase
+class EnvTest extends TestCase
 {
     public static function setUpBeforeClass(): void
     {
@@ -22,19 +22,23 @@ class FunctionsTest extends TestCase
         putenv('NULL_VALUE=null');
         putenv('NULL_VALUE_PARENTHESES=(null)');
         putenv('REGULAR_VALUE=   foo  ');
+        putenv('INT_VALUE=100');
+        putenv('NUMERIC_VALUE_VALUE=58.68');
     }
 
     public static function tearDownAfterClass(): void
     {
-        putenv('TRUE_VALUE=');
-        putenv('TRUE_VALUE_PARENTHESES=');
-        putenv('FALSE_VALUE=');
-        putenv('FALSE_VALUE_PARENTHESES=');
-        putenv('EMPTY_VALUE=');
-        putenv('EMPTY_VALUE_PARENTHESES=');
-        putenv('NULL_VALUE=');
-        putenv('NULL_VALUE_PARENTHESES=');
-        putenv('REGULAR_VALUE=');
+        putenv('TRUE_VALUE');
+        putenv('TRUE_VALUE_PARENTHESES');
+        putenv('FALSE_VALUE');
+        putenv('FALSE_VALUE_PARENTHESES');
+        putenv('EMPTY_VALUE');
+        putenv('EMPTY_VALUE_PARENTHESES');
+        putenv('NULL_VALUE');
+        putenv('NULL_VALUE_PARENTHESES');
+        putenv('REGULAR_VALUE');
+        putenv('INT_VALUE');
+        putenv('NUMERIC_VALUE_VALUE');
     }
 
     /** @test */
@@ -55,6 +59,13 @@ class FunctionsTest extends TestCase
         self::assertEmpty(env('EMPTY_VALUE_PARENTHESES'));
         self::assertNull(env('NULL_VALUE'));
         self::assertNull(env('NULL_VALUE_PARENTHESES'));
+    }
+
+    /** @test */
+    public function numbersAreParsed(): void
+    {
+        self::assertSame(100, env('INT_VALUE'));
+        self::assertSame(58, env('NUMERIC_VALUE_VALUE'));
     }
 
     /** @test */
