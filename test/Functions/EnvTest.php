@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace ShlinkioTest\Shlink\Config\Functions;
 
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 
 use function putenv;
@@ -41,14 +42,14 @@ class EnvTest extends TestCase
         putenv('NUMERIC_VALUE_VALUE');
     }
 
-    /** @test */
+    #[Test]
     public function envReturnsDefaultValueForUndefinedEnvVars(): void
     {
         self::assertEquals(null, env('THIS_DOES_NOT_EXIST'));
         self::assertEquals('default', env('THIS_DOES_NOT_EXIST', 'default'));
     }
 
-    /** @test */
+    #[Test]
     public function specificValueKeywordsAreParsed(): void
     {
         self::assertTrue(env('TRUE_VALUE'));
@@ -61,14 +62,14 @@ class EnvTest extends TestCase
         self::assertNull(env('NULL_VALUE_PARENTHESES'));
     }
 
-    /** @test */
+    #[Test]
     public function numbersAreParsed(): void
     {
         self::assertSame(100, env('INT_VALUE'));
         self::assertSame(58, env('NUMERIC_VALUE_VALUE'));
     }
 
-    /** @test */
+    #[Test]
     public function regularValuesAreTrimmed(): void
     {
         self::assertEquals('foo', env('REGULAR_VALUE'));

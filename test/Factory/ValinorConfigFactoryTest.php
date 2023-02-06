@@ -6,16 +6,15 @@ namespace ShlinkioTest\Shlink\Config\Factory;
 
 use CuyZ\Valinor\Mapper\MappingError;
 use Laminas\ServiceManager\ServiceManager;
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 use Shlinkio\Shlink\Config\Factory\ValinorConfigFactory;
 use ShlinkioTest\Shlink\Config\Model\FooModel;
 
 class ValinorConfigFactoryTest extends TestCase
 {
-    /**
-     * @test
-     * @dataProvider provideConfigs
-     */
+    #[Test, DataProvider('provideConfigs')]
     public function mapsObjectAsExpected(array $config, string $configKey, callable $assert): void
     {
         $serviceManager = new ServiceManager(['services' => [
@@ -61,10 +60,7 @@ class ValinorConfigFactoryTest extends TestCase
         }];
     }
 
-    /**
-     * @test
-     * @dataProvider provideInvalidConfig
-     */
+    #[Test, DataProvider('provideInvalidConfig')]
     public function throwsExceptionWhenTryingToMapInvalidData(array $config): void
     {
         $serviceManager = new ServiceManager(['services' => [

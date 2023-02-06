@@ -6,6 +6,8 @@ namespace ShlinkioTest\Shlink\Config\Factory;
 
 use Laminas\ServiceManager\Exception\ServiceNotCreatedException;
 use Laminas\ServiceManager\ServiceManager;
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 use Shlinkio\Shlink\Config\Exception\InvalidArgumentException;
 use Shlinkio\Shlink\Config\Factory\DottedAccessConfigAbstractFactory;
@@ -20,10 +22,7 @@ class DottedAccessConfigAbstractFactoryTest extends TestCase
         $this->factory = new DottedAccessConfigAbstractFactory();
     }
 
-    /**
-     * @test
-     * @dataProvider provideDotNames
-     */
+    #[Test, DataProvider('provideDotNames')]
     public function canCreateOnlyServicesWithDot(string $serviceName, bool $canCreate): void
     {
         self::assertEquals($canCreate, $this->factory->canCreate(new ServiceManager(), $serviceName));
@@ -37,7 +36,7 @@ class DottedAccessConfigAbstractFactoryTest extends TestCase
         yield 'with another invalid service' => ['foo', false];
     }
 
-    /** @test */
+    #[Test]
     public function throwsExceptionWhenFirstPartOfTheServiceIsNotRegistered(): void
     {
         $this->expectException(ServiceNotCreatedException::class);
@@ -48,10 +47,7 @@ class DottedAccessConfigAbstractFactoryTest extends TestCase
         $this->factory->__invoke(new ServiceManager(), 'foo.bar');
     }
 
-    /**
-     * @test
-     * @dataProvider provideNonArrayValues
-     */
+    #[Test, DataProvider('provideNonArrayValues')]
     public function throwsExceptionWhenFirstPartOfTheServiceDoesNotResultInAnArray(mixed $value): void
     {
         $this->expectException(ServiceNotCreatedException::class);
@@ -73,7 +69,7 @@ class DottedAccessConfigAbstractFactoryTest extends TestCase
         yield 'number' => [100];
     }
 
-    /** @test */
+    #[Test]
     public function dottedNotationIsRecursivelyResolvedUntilLastValueIsFoundAndReturned(): void
     {
         $a = new stdClass();
@@ -91,7 +87,7 @@ class DottedAccessConfigAbstractFactoryTest extends TestCase
         self::assertSame($b, $this->factory->__invoke($sm, 'foo.bar.biz'));
     }
 
-    /** @test */
+    #[Test]
     public function exceptionIsThrownIfAnyStepCannotBeResolved(): void
     {
         $this->expectException(InvalidArgumentException::class);

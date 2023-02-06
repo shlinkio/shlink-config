@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace ShlinkioTest\Shlink\Config\Functions;
 
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 
 use function putenv;
@@ -31,7 +32,7 @@ class GetOpenswooleConfigFromEnvTest extends TestCase
         putenv('OPENSWOOLE_VERSION');
     }
 
-    /** @test */
+    #[Test]
     public function properEnvVarsAreReadAndParsed(): void
     {
         self::assertEquals([

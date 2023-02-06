@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace ShlinkioTest\Shlink\Config\ConfigAggregator;
 
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 use Shlinkio\Shlink\Config\ConfigAggregator\EnvVarLoaderProvider;
 
@@ -33,7 +34,7 @@ class EnvVarLoaderProviderTest extends TestCase
         }
     }
 
-    /** @test */
+    #[Test]
     public function putsExpectedEnvVars(): void
     {
         $provider = new EnvVarLoaderProvider(
