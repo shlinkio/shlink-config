@@ -28,7 +28,7 @@ class ValinorConfigFactoryTest extends TestCase
         $assert($result);
     }
 
-    public function provideConfigs(): iterable
+    public static function provideConfigs(): iterable
     {
         yield 'ignored keys' => [[
             'foo' => 'the_value',
@@ -75,7 +75,7 @@ class ValinorConfigFactoryTest extends TestCase
         ValinorConfigFactory::config($serviceManager, FooModel::class);
     }
 
-    public function provideInvalidConfig(): iterable
+    public static function provideInvalidConfig(): iterable
     {
         yield 'missing required prop' => [[]];
         yield 'invalid type' => [['foo' => 'bar', 'withCamelCase' => 'foo']];

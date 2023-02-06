@@ -29,7 +29,7 @@ class DottedAccessConfigAbstractFactoryTest extends TestCase
         self::assertEquals($canCreate, $this->factory->canCreate(new ServiceManager(), $serviceName));
     }
 
-    public function provideDotNames(): iterable
+    public static function provideDotNames(): iterable
     {
         yield 'with a valid service' => ['foo.bar', true];
         yield 'with another valid service' => ['config.something', true];
@@ -64,7 +64,7 @@ class DottedAccessConfigAbstractFactoryTest extends TestCase
         ]]), 'a.bar');
     }
 
-    public function provideNonArrayValues(): iterable
+    public static function provideNonArrayValues(): iterable
     {
         yield 'string' => ['string'];
         yield 'object' => [new stdClass()];
