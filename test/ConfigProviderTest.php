@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace ShlinkioTest\Shlink\Config;
 
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 use Shlinkio\Shlink\Config\ConfigProvider;
 use Shlinkio\Shlink\Config\Factory\DottedAccessConfigAbstractFactory;
@@ -18,7 +19,7 @@ class ConfigProviderTest extends TestCase
         $this->configProvider = new ConfigProvider();
     }
 
-    /** @test */
+    #[Test]
     public function configIsReturned(): void
     {
         $config = ($this->configProvider)();

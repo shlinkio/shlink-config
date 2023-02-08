@@ -3,6 +3,7 @@ version: '3'
 services:
   shlink_config_php:
     container_name: shlink_config_php
-    image: composer:2
+    build:
+      context: .
     volumes:
       - ./:/app

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace ShlinkioTest\Shlink\Config\Factory;
 
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 use Shlinkio\Shlink\Config\Factory\SwooleInstalledFactory;
 
@@ -16,7 +17,7 @@ class SwooleInstalledFactoryTest extends TestCase
         $this->factory = new SwooleInstalledFactory();
     }
 
-    /** @test */
+    #[Test]
     public function properlyCreatesHelperFunction(): void
     {
         $func = ($this->factory)();
