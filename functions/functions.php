@@ -45,12 +45,13 @@ function env(string $key, mixed $default = null): mixed
 
 function parseEnvVar(string $value): string|int|bool|null
 {
-    return match (strtolower($value)) {
+    $trimmedValue = trim($value);
+    return match (strtolower($trimmedValue)) {
         'true', '(true)' => true,
         'false', '(false)' => false,
         'empty', '(empty)' => '',
         'null', '(null)' => null,
-        default => is_numeric($value) ? (int) $value : trim($value),
+        default => is_numeric($trimmedValue) ? (int) $trimmedValue : $trimmedValue,
     };
 }
 
