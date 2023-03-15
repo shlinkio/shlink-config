@@ -15,31 +15,37 @@ class EnvTest extends TestCase
     public static function setUpBeforeClass(): void
     {
         putenv('TRUE_VALUE=true');
+        putenv('TRUE_VALUE_SPACES=true ');
         putenv('TRUE_VALUE_PARENTHESES=(true)');
         putenv('FALSE_VALUE=false');
         putenv('FALSE_VALUE_PARENTHESES=(false)');
         putenv('EMPTY_VALUE=empty');
         putenv('EMPTY_VALUE_PARENTHESES=(empty)');
+        putenv('EMPTY_VALUE_PARENTHESES_SPACES= (empty)  ');
         putenv('NULL_VALUE=null');
         putenv('NULL_VALUE_PARENTHESES=(null)');
         putenv('REGULAR_VALUE=   foo  ');
         putenv('INT_VALUE=100');
-        putenv('NUMERIC_VALUE_VALUE=58.68');
+        putenv('INT_VALUE_SPACES=  80');
+        putenv('NUMERIC_VALUE=58.68');
     }
 
     public static function tearDownAfterClass(): void
     {
         putenv('TRUE_VALUE');
+        putenv('TRUE_VALUE_SPACES');
         putenv('TRUE_VALUE_PARENTHESES');
         putenv('FALSE_VALUE');
         putenv('FALSE_VALUE_PARENTHESES');
         putenv('EMPTY_VALUE');
         putenv('EMPTY_VALUE_PARENTHESES');
+        putenv('EMPTY_VALUE_PARENTHESES_SPACES');
         putenv('NULL_VALUE');
         putenv('NULL_VALUE_PARENTHESES');
         putenv('REGULAR_VALUE');
         putenv('INT_VALUE');
-        putenv('NUMERIC_VALUE_VALUE');
+        putenv('INT_VALUE_SPACES');
+        putenv('NUMERIC_VALUE');
     }
 
     #[Test]
@@ -66,12 +72,15 @@ class EnvTest extends TestCase
     public function numbersAreParsed(): void
     {
         self::assertSame(100, env('INT_VALUE'));
-        self::assertSame(58, env('NUMERIC_VALUE_VALUE'));
+        self::assertSame(58, env('NUMERIC_VALUE'));
     }
 
     #[Test]
-    public function regularValuesAreTrimmed(): void
+    public function valuesAreTrimmed(): void
     {
         self::assertEquals('foo', env('REGULAR_VALUE'));
+        self::assertTrue(env('TRUE_VALUE_SPACES'));
+        self::assertEquals('', env('EMPTY_VALUE_PARENTHESES_SPACES'));
+        self::assertEquals(80, env('INT_VALUE_SPACES'));
     }
 }
