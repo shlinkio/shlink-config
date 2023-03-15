@@ -4,12 +4,12 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com), and this project adheres to [Semantic Versioning](https://semver.org).
 
-## [Unreleased]
+## [2.4.1] - 2023-03-15
 ### Added
 * *Nothing*
 
 ### Changed
-* Updated to PHPUnit 10.
+* Update to PHPUnit 10.
 
 ### Deprecated
 * *Nothing*
@@ -18,7 +18,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com), and this 
 * *Nothing*
 
 ### Fixed
-* *Nothing*
+* Make sure env var values are trimmed before applying logic or evaluating them in any way.
 
 
 ## [2.4.0] - 2023-01-28
