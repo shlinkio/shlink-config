@@ -70,6 +70,9 @@ function putNotYetDefinedEnv(string $key, mixed $value): void
     putenv(sprintf('%s=%s', $key, $normalizedValue));
 }
 
+/**
+ * @deprecated Openswoole support to be removed in Shlink 4.0.0
+ */
 function getOpenswooleConfigFromEnv(): array
 {
     $swoolePrefix = 'OPENSWOOLE_';
@@ -85,12 +88,17 @@ function getOpenswooleConfigFromEnv(): array
     return array_combine($keys, $values);
 }
 
+/**
+ * @deprecated Openswoole support to be removed in Shlink 4.0.0
+ */
 function openswooleIsInstalled(): bool
 {
-    // TODO regular swoole support is deprecated. Stop checking for it once Shlink v4.0.0 is released
     return extension_loaded('openswoole') || extension_loaded('swoole');
 }
 
+/**
+ * @deprecated Openswoole support to be removed in Shlink 4.0.0
+ */
 function runningInOpenswoole(): bool
 {
     return PHP_SAPI === 'cli' && env(OPENSWOOLE_VERSION_ENV) !== null && openswooleIsInstalled();

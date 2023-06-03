@@ -12,7 +12,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com), and this 
 * Update to PHPUnit 10.1
 
 ### Deprecated
-* *Nothing*
+* Deprecated openswoole-related helpers.
 
 ### Removed
 * *Nothing*
