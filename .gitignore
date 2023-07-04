@@ -2,4 +2,3 @@ build
 composer.lock
 vendor/
 docker-compose.override.yml
-.phpunit.cache
