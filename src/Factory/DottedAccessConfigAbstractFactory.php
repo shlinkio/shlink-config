@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace Shlinkio\Shlink\Config\Factory;
 
 use ArrayAccess;
-use Interop\Container\ContainerInterface;
 use Laminas\ServiceManager\Exception\ServiceNotCreatedException;
 use Laminas\ServiceManager\Factory\AbstractFactoryInterface;
+use Psr\Container\ContainerInterface;
 use Shlinkio\Shlink\Config\Exception\InvalidArgumentException;
 
 use function array_key_exists;

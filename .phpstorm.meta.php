@@ -7,7 +7,7 @@ use Laminas\ServiceManager\ServiceLocatorInterface;
 /**
  * PhpStorm Container Interop code completion
  *
- * Add code completion for container-interop.
+ * Add code completion for psr-container.
  *
  * \App\ClassName::class will automatically resolve to it's own name.
  *
