@@ -6,7 +6,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com), and this 
 
 ## [Unreleased]
 ### Added
-* *Nothing*
+* Add support for PHP 8.3
 
 ### Changed
 * Update to PHPUnit 10.1
@@ -16,7 +16,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com), and this 
 * Deprecated openswoole-related helpers.
 
 ### Removed
-* *Nothing*
+* Drop support for PHP 8.1
 
 ### Fixed
 * *Nothing*
