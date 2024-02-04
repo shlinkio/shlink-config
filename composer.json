@@ -13,19 +13,19 @@
     ],
     "require": {
         "php": "^8.2",
-        "cuyz/valinor": "^1.7",
+        "cuyz/valinor": "^1.9",
         "laminas/laminas-config": "^3.9",
         "laminas/laminas-servicemanager": "^3.22"
     },
     "require-dev": {
         "devster/ubench": "^2.1",
-        "infection/infection": "^0.27.7",
+        "infection/infection": "^0.27.9",
         "phpstan/phpstan": "^1.10",
-        "phpunit/phpunit": "^10.4",
+        "phpunit/phpunit": "^10.5",
         "psr/simple-cache": "^2.0",
         "roave/security-advisories": "dev-master",
         "shlinkio/php-coding-standard": "~2.3.0",
-        "symfony/var-dumper": "^6.3"
+        "symfony/var-dumper": "^7.0"
     },
     "autoload": {
         "psr-4": {
