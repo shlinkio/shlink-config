@@ -7,12 +7,6 @@ namespace Shlinkio\Shlink\Config;
 use Laminas\Config\Factory;
 use Laminas\Stdlib\Glob;
 
-use function array_combine;
-use function array_filter;
-use function array_keys;
-use function array_map;
-use function array_values;
-use function extension_loaded;
 use function getenv;
 use function implode;
 use function is_array;
@@ -20,15 +14,10 @@ use function is_numeric;
 use function is_scalar;
 use function putenv;
 use function sprintf;
-use function str_replace;
-use function str_starts_with;
 use function strtolower;
 use function trim;
 
-use const ARRAY_FILTER_USE_KEY;
 use const PHP_SAPI;
-
-const OPENSWOOLE_VERSION_ENV = 'OPENSWOOLE_VERSION';
 
 function loadConfigFromGlob(string $globPattern): array
 {
@@ -68,40 +57,6 @@ function putNotYetDefinedEnv(string $key, mixed $value): void
         default => (string) $value,
     };
     putenv(sprintf('%s=%s', $key, $normalizedValue));
-}
-
-/**
- * @deprecated Openswoole support to be removed in Shlink 4.0.0
- */
-function getOpenswooleConfigFromEnv(): array
-{
-    $swoolePrefix = 'OPENSWOOLE_';
-    $env = getenv();
-    $env = array_filter(
-        $env,
-        static fn (string $key) => str_starts_with($key, $swoolePrefix) && $key !== OPENSWOOLE_VERSION_ENV,
-        ARRAY_FILTER_USE_KEY,
-    );
-    $keys = array_map(static fn (string $key) => strtolower(str_replace($swoolePrefix, '', $key)), array_keys($env));
-    $values = array_map(parseEnvVar(...), array_values($env));
-
-    return array_combine($keys, $values);
-}
-
-/**
- * @deprecated Openswoole support to be removed in Shlink 4.0.0
- */
-function openswooleIsInstalled(): bool
-{
-    return extension_loaded('openswoole') || extension_loaded('swoole');
-}
-
-/**
- * @deprecated Openswoole support to be removed in Shlink 4.0.0
- */
-function runningInOpenswoole(): bool
-{
-    return PHP_SAPI === 'cli' && env(OPENSWOOLE_VERSION_ENV) !== null && openswooleIsInstalled();
 }
 
 function runningInRoadRunner(): bool
