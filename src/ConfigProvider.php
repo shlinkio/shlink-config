@@ -11,9 +11,6 @@ class ConfigProvider
         return [
 
             'dependencies' => [
-                'factories' => [
-                    Factory\SwooleInstalledFactory::SWOOLE_INSTALLED => Factory\SwooleInstalledFactory::class,
-                ],
                 'abstract_factories' => [
                     Factory\DottedAccessConfigAbstractFactory::class,
                 ],

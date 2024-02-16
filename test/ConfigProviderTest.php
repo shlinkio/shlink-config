@@ -8,7 +8,6 @@ use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 use Shlinkio\Shlink\Config\ConfigProvider;
 use Shlinkio\Shlink\Config\Factory\DottedAccessConfigAbstractFactory;
-use Shlinkio\Shlink\Config\Factory\SwooleInstalledFactory;
 
 class ConfigProviderTest extends TestCase
 {
@@ -25,9 +24,6 @@ class ConfigProviderTest extends TestCase
         $config = ($this->configProvider)();
         self::assertArrayHasKey('dependencies', $config);
         self::assertEquals([
-            'factories' => [
-                SwooleInstalledFactory::SWOOLE_INSTALLED => SwooleInstalledFactory::class,
-            ],
             'abstract_factories' => [
                 DottedAccessConfigAbstractFactory::class,
             ],
