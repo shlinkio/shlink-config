@@ -6,8 +6,8 @@ namespace ShlinkioTest\Shlink\Config\Factory;
 
 use Laminas\ServiceManager\Exception\ServiceNotCreatedException;
 use Laminas\ServiceManager\ServiceManager;
-use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\Test;
+use PHPUnit\Framework\Attributes\TestWith;
 use PHPUnit\Framework\TestCase;
 use Shlinkio\Shlink\Config\Exception\InvalidArgumentException;
 use Shlinkio\Shlink\Config\Factory\DottedAccessConfigAbstractFactory;
@@ -22,18 +22,14 @@ class DottedAccessConfigAbstractFactoryTest extends TestCase
         $this->factory = new DottedAccessConfigAbstractFactory();
     }
 
-    #[Test, DataProvider('provideDotNames')]
+    #[Test]
+    #[TestWith(data: ['foo.bar', true], name: 'valid service')]
+    #[TestWith(data: ['config.something', true], name: 'another valid service')]
+    #[TestWith(data: ['config_something', false], name: 'invalid service')]
+    #[TestWith(data: ['foo', false], name: 'another invalid service')]
     public function canCreateOnlyServicesWithDot(string $serviceName, bool $canCreate): void
     {
         self::assertEquals($canCreate, $this->factory->canCreate(new ServiceManager(), $serviceName));
-    }
-
-    public static function provideDotNames(): iterable
-    {
-        yield 'with a valid service' => ['foo.bar', true];
-        yield 'with another valid service' => ['config.something', true];
-        yield 'with an invalid service' => ['config_something', false];
-        yield 'with another invalid service' => ['foo', false];
     }
 
     #[Test]
@@ -47,7 +43,12 @@ class DottedAccessConfigAbstractFactoryTest extends TestCase
         $this->factory->__invoke(new ServiceManager(), 'foo.bar');
     }
 
-    #[Test, DataProvider('provideNonArrayValues')]
+    #[Test]
+    #[TestWith(data: ['string'], name: 'string')]
+    #[TestWith(data: [new stdClass()], name: 'object')]
+    #[TestWith(data: [true], name: 'true')]
+    #[TestWith(data: [false], name: 'false')]
+    #[TestWith(data: [100], name: 'number')]
     public function throwsExceptionWhenFirstPartOfTheServiceDoesNotResultInAnArray(mixed $value): void
     {
         $this->expectException(ServiceNotCreatedException::class);
@@ -58,15 +59,6 @@ class DottedAccessConfigAbstractFactoryTest extends TestCase
         $this->factory->__invoke(new ServiceManager(['services' => [
             'a' => $value,
         ]]), 'a.bar');
-    }
-
-    public static function provideNonArrayValues(): iterable
-    {
-        yield 'string' => ['string'];
-        yield 'object' => [new stdClass()];
-        yield 'true' => [true];
-        yield 'false' => [false];
-        yield 'number' => [100];
     }
 
     #[Test]
