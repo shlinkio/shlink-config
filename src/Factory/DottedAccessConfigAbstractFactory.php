@@ -19,6 +19,10 @@ use function str_contains;
 
 class DottedAccessConfigAbstractFactory implements AbstractFactoryInterface
 {
+    /**
+     * @param string $requestedName
+     * @todo Add native type when servicemanager 3 is no longer supported
+     */
     public function canCreate(ContainerInterface $container, $requestedName): bool // phpcs:ignore
     {
         return str_contains($requestedName, '.');
@@ -26,6 +30,7 @@ class DottedAccessConfigAbstractFactory implements AbstractFactoryInterface
 
     /**
      * @param string $requestedName
+     * @todo Add native type when servicemanager 3 is no longer supported
      */
     // phpcs:ignore
     public function __invoke(ContainerInterface $container, $requestedName, ?array $options = null): mixed
@@ -54,6 +59,7 @@ class DottedAccessConfigAbstractFactory implements AbstractFactoryInterface
 
     /**
      * @throws InvalidArgumentException
+     * @param array|ArrayAccess<string, mixed> $array
      */
     private function readKeysFromArray(array $keys, array|ArrayAccess $array): mixed
     {
@@ -75,6 +81,9 @@ class DottedAccessConfigAbstractFactory implements AbstractFactoryInterface
         return $value;
     }
 
+    /**
+     * @param array|ArrayAccess<string, mixed> $array
+     */
     private function keyExists(string $key, array|ArrayAccess $array): bool
     {
         return is_array($array) ? array_key_exists($key, $array) : $array->offsetExists($key);
