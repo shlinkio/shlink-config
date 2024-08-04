@@ -20,7 +20,7 @@
     "require-dev": {
         "devster/ubench": "^2.1",
         "phpstan/phpstan": "^1.11",
-        "phpunit/phpunit": "^11.2",
+        "phpunit/phpunit": "^11.3",
         "psr/simple-cache": "^2.0",
         "roave/security-advisories": "dev-master",
         "shlinkio/php-coding-standard": "~2.3.0",
@@ -48,7 +48,7 @@
         "cs": "phpcs",
         "cs:fix": "phpcbf",
         "stan": "phpstan analyse",
-        "test": "phpunit --order-by=random --testdox --colors=always",
+        "test": "phpunit --order-by=random --testdox --testdox-summary",
         "test:ci": "@test --coverage-clover=build/clover.xml --coverage-xml=build/coverage-xml --log-junit=build/junit.xml",
         "test:pretty": "@test --coverage-html build/coverage-html"
     },
