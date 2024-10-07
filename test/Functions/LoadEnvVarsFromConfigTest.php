@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace ShlinkioTest\Shlink\Config\ConfigAggregator;
+namespace ShlinkioTest\Shlink\Config\Functions;
 
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
-use Shlinkio\Shlink\Config\ConfigAggregator\EnvVarLoaderProvider;
 
 use function getenv;
 use function putenv;
 use function Shlinkio\Shlink\Config\env;
+use function Shlinkio\Shlink\Config\loadEnvVarsFromConfig;
 
-class EnvVarLoaderProviderTest extends TestCase
+class LoadEnvVarsFromConfigTest extends TestCase
 {
     private const VALID_ENV_VARS = [
         'BAR',
@@ -37,14 +37,11 @@ class EnvVarLoaderProviderTest extends TestCase
     #[Test]
     public function putsExpectedEnvVars(): void
     {
-        $provider = new EnvVarLoaderProvider(
+        loadEnvVarsFromConfig(
             __DIR__ . '/../../test-resources/generated_config.php',
             self::VALID_ENV_VARS,
         );
 
-        $result = $provider();
-
-        self::assertEquals([], $result);
         self::assertEquals('true', getenv('BAR'));
         self::assertTrue(env('BAR'));
         self::assertEquals('false', getenv('BAZ'));

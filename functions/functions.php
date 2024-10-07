@@ -9,6 +9,7 @@ use Laminas\Stdlib\Glob;
 
 use function getenv;
 use function implode;
+use function in_array;
 use function is_array;
 use function is_numeric;
 use function is_scalar;
@@ -42,6 +43,21 @@ function parseEnvVar(string $value): string|int|bool|null
         'null', '(null)' => null,
         default => is_numeric($trimmedValue) ? (int) $trimmedValue : $trimmedValue,
     };
+}
+
+/**
+ * Loads config from $configPath, then puts all its values as env vars if they are not yet defined
+ */
+function loadEnvVarsFromConfig(string $configPath, ?array $allowedEnvVars = null): void
+{
+    $config = loadConfigFromGlob($configPath);
+    foreach ($config as $envVar => $value) {
+        if ($allowedEnvVars !== null && ! in_array($envVar, $allowedEnvVars, true)) {
+            continue;
+        }
+
+        putNotYetDefinedEnv($envVar, $value);
+    }
 }
 
 function putNotYetDefinedEnv(string $key, mixed $value): void

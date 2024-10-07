@@ -4,10 +4,9 @@ declare(strict_types=1);
 
 namespace Shlinkio\Shlink\Config\ConfigAggregator;
 
-use function in_array;
-use function Shlinkio\Shlink\Config\loadConfigFromGlob;
-use function Shlinkio\Shlink\Config\putNotYetDefinedEnv;
+use function Shlinkio\Shlink\Config\loadEnvVarsFromConfig;
 
+/** @deprecated Use loadEnvVarsFromConfig instead */
 class EnvVarLoaderProvider
 {
     public function __construct(private readonly string $configPath, private readonly ?array $allowedEnvVars = null)
@@ -16,15 +15,7 @@ class EnvVarLoaderProvider
 
     public function __invoke(): array
     {
-        $config = loadConfigFromGlob($this->configPath);
-        foreach ($config as $envVar => $value) {
-            if ($this->allowedEnvVars !== null && ! in_array($envVar, $this->allowedEnvVars, true)) {
-                continue;
-            }
-
-            putNotYetDefinedEnv($envVar, $value);
-        }
-
+        loadEnvVarsFromConfig($this->configPath, $this->allowedEnvVars);
         return [];
     }
 }
