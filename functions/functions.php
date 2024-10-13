@@ -46,6 +46,23 @@ function parseEnvVar(string $value): string|int|bool|null
 }
 
 /**
+ * @param string|string[]|int|int[]|bool|null $value
+ */
+function formatEnvVarValue(string|int|bool|array|null $value): string
+{
+    $isArray = is_array($value);
+    if (! $isArray && ! is_scalar($value)) {
+        return '';
+    }
+
+    return $isArray ? implode(',', $value) : match ($value) {
+        true => 'true',
+        false => 'false',
+        default => (string) $value,
+    };
+}
+
+/**
  * Loads config from $configPath, then puts all its values as env vars if they are not yet defined
  */
 function loadEnvVarsFromConfig(string $configPath, ?array $allowedEnvVars = null): void
@@ -62,17 +79,12 @@ function loadEnvVarsFromConfig(string $configPath, ?array $allowedEnvVars = null
 
 function putNotYetDefinedEnv(string $key, mixed $value): void
 {
-    $isArray = is_array($value);
-    if (!($isArray || is_scalar($value)) || env($key) !== null) {
+    if (env($key) !== null) {
         return;
     }
 
-    $normalizedValue = $isArray ? implode(',', $value) : match ($value) {
-        true => 'true',
-        false => 'false',
-        default => (string) $value,
-    };
-    putenv(sprintf('%s=%s', $key, $normalizedValue));
+    $formattedValue = formatEnvVarValue($value);
+    putenv(sprintf('%s=%s', $key, $formattedValue));
 }
 
 function runningInRoadRunner(): bool

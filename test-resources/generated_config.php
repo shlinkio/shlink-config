@@ -9,6 +9,7 @@ return [
     'BAR' => true,
     'BAZ' => false,
     'NUMBER' => 3,
+    'NULL' => null,
     'invalid' => [
         'nested_invalid' => 'string',
     ],

@@ -7,6 +7,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com), and this 
 ## [Unreleased]
 ### Added
 * Expose new `loadEnvVarsFromConfig` function to use instead of `EnvVarLoaderProvider`.
+* Expose new `formatEnvVarValue` function that stringifies a value to use as an env var.
 
 ### Changed
 * *Nothing*

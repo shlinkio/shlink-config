@@ -18,6 +18,7 @@ class LoadEnvVarsFromConfigTest extends TestCase
         'BAR',
         'BAZ',
         'NUMBER',
+        'NULL',
         'OVERWRITTEN_ENV',
         'ENV_ARRAY',
     ];
@@ -52,5 +53,6 @@ class LoadEnvVarsFromConfigTest extends TestCase
         self::assertFalse(getenv('foo2'));
         self::assertEquals('3', getenv('NUMBER'));
         self::assertEquals(3, env('NUMBER'));
+        self::assertEquals('', env('NULL'));
     }
 }
