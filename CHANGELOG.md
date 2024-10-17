@@ -4,6 +4,23 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com), and this project adheres to [Semantic Versioning](https://semver.org).
 
+## [3.2.1] - 2024-10-17
+### Added
+* *Nothing*
+
+### Changed
+* *Nothing*
+
+### Deprecated
+* *Nothing*
+
+### Removed
+* *Nothing*
+
+### Fixed
+* Fix regression where `loadEnvVarsFromConfig` defines env vars with null value as empty instead of skipping them entirely.
+
+
 ## [3.2.0] - 2024-10-14
 ### Added
 * Expose new `loadEnvVarsFromConfig` function to use instead of `EnvVarLoaderProvider`.

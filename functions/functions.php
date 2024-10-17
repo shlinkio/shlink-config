@@ -48,11 +48,11 @@ function parseEnvVar(string $value): string|int|bool|null
 /**
  * @param string|string[]|int|int[]|bool|null $value
  */
-function formatEnvVarValue(string|int|bool|array|null $value): string
+function formatEnvVarValueOrNull(string|int|bool|array|null $value): string|null
 {
     $isArray = is_array($value);
     if (! $isArray && ! is_scalar($value)) {
-        return '';
+        return null;
     }
 
     return $isArray ? implode(',', $value) : match ($value) {
@@ -60,6 +60,14 @@ function formatEnvVarValue(string|int|bool|array|null $value): string
         false => 'false',
         default => (string) $value,
     };
+}
+
+/**
+ * @param string|string[]|int|int[]|bool|null $value
+ */
+function formatEnvVarValue(string|int|bool|array|null $value): string
+{
+    return formatEnvVarValueOrNull($value) ?? '';
 }
 
 /**
@@ -83,7 +91,11 @@ function putNotYetDefinedEnv(string $key, mixed $value): void
         return;
     }
 
-    $formattedValue = formatEnvVarValue($value);
+    $formattedValue = formatEnvVarValueOrNull($value);
+    if ($formattedValue === null) {
+        return;
+    }
+
     putenv(sprintf('%s=%s', $key, $formattedValue));
 }
 

@@ -9,6 +9,7 @@ use PHPUnit\Framework\Attributes\TestWith;
 use PHPUnit\Framework\TestCase;
 
 use function Shlinkio\Shlink\Config\formatEnvVarValue;
+use function Shlinkio\Shlink\Config\formatEnvVarValueOrNull;
 
 class FormatEnvVarValueTest extends TestCase
 {
@@ -23,5 +24,6 @@ class FormatEnvVarValueTest extends TestCase
     public function valuesAreFormattedAsExpected(string|int|bool|array|null $value, string $expectedResult): void
     {
         self::assertEquals($expectedResult, formatEnvVarValue($value));
+        self::assertEquals($value === null ? null : $expectedResult, formatEnvVarValueOrNull($value));
     }
 }
