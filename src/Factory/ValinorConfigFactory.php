@@ -10,6 +10,7 @@ use CuyZ\Valinor\MapperBuilder;
 use Psr\Container\ContainerInterface;
 use Psr\SimpleCache\CacheInterface;
 
+/** @deprecated */
 class ValinorConfigFactory
 {
     public static function __callStatic(string $name, array $arguments): mixed
