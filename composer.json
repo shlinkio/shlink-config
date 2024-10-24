@@ -13,11 +13,14 @@
     ],
     "require": {
         "php": "^8.2",
-        "cuyz/valinor": "^1.12",
         "laminas/laminas-config": "^3.9",
         "laminas/laminas-servicemanager": "^4.2 || ^3.22"
     },
+    "suggest": {
+        "cuyz/valinor": "To be able to use ValinorConfigFactory"
+    },
     "require-dev": {
+        "cuyz/valinor": "^1.12",
         "devster/ubench": "^2.1",
         "phpstan/phpstan": "^1.11",
         "phpunit/phpunit": "^11.3",

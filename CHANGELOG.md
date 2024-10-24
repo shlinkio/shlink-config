@@ -9,10 +9,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com), and this 
 * *Nothing*
 
 ### Changed
-* Switch to xdebug for code coverage reports, as pcov is not marking functions as covered
+* Switch to xdebug for code coverage reports, as pcov is not marking functions as covered.
+* Make `cuyz/valinor` an optional dependency, required only if you plan to use `ValinorConfigFactory`.
 
 ### Deprecated
-* *Nothing*
+* Deprecate `ValinorConfigFactory`.
 
 ### Removed
 * *Nothing*
