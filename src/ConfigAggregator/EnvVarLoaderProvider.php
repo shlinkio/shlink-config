@@ -9,7 +9,7 @@ use function Shlinkio\Shlink\Config\loadEnvVarsFromConfig;
 /** @deprecated Use loadEnvVarsFromConfig instead */
 class EnvVarLoaderProvider
 {
-    public function __construct(private readonly string $configPath, private readonly ?array $allowedEnvVars = null)
+    public function __construct(private readonly string $configPath, private readonly array|null $allowedEnvVars = null)
     {
     }
 

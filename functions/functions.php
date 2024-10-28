@@ -73,7 +73,7 @@ function formatEnvVarValue(string|int|bool|array|null $value): string
 /**
  * Loads config from $configPath, then puts all its values as env vars if they are not yet defined
  */
-function loadEnvVarsFromConfig(string $configPath, ?array $allowedEnvVars = null): void
+function loadEnvVarsFromConfig(string $configPath, array|null $allowedEnvVars = null): void
 {
     $config = loadConfigFromGlob($configPath);
     foreach ($config as $envVar => $value) {
