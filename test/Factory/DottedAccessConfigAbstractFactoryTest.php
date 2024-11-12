@@ -23,10 +23,10 @@ class DottedAccessConfigAbstractFactoryTest extends TestCase
     }
 
     #[Test]
-    #[TestWith(data: ['foo.bar', true], name: 'valid service')]
-    #[TestWith(data: ['config.something', true], name: 'another valid service')]
-    #[TestWith(data: ['config_something', false], name: 'invalid service')]
-    #[TestWith(data: ['foo', false], name: 'another invalid service')]
+    #[TestWith(['foo.bar', true], 'valid service')]
+    #[TestWith(['config.something', true], 'another valid service')]
+    #[TestWith(['config_something', false], 'invalid service')]
+    #[TestWith(['foo', false], 'another invalid service')]
     public function canCreateOnlyServicesWithDot(string $serviceName, bool $canCreate): void
     {
         self::assertEquals($canCreate, $this->factory->canCreate(new ServiceManager(), $serviceName));
@@ -44,11 +44,11 @@ class DottedAccessConfigAbstractFactoryTest extends TestCase
     }
 
     #[Test]
-    #[TestWith(data: ['string'], name: 'string')]
-    #[TestWith(data: [new stdClass()], name: 'object')]
-    #[TestWith(data: [true], name: 'true')]
-    #[TestWith(data: [false], name: 'false')]
-    #[TestWith(data: [100], name: 'number')]
+    #[TestWith(['string'], 'string')]
+    #[TestWith([new stdClass()], 'object')]
+    #[TestWith([true], 'true')]
+    #[TestWith([false], 'false')]
+    #[TestWith([100], 'number')]
     public function throwsExceptionWhenFirstPartOfTheServiceDoesNotResultInAnArray(mixed $value): void
     {
         $this->expectException(ServiceNotCreatedException::class);

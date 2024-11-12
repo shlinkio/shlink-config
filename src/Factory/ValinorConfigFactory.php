@@ -21,6 +21,7 @@ class ValinorConfigFactory
         $mapper = self::getMapper($container);
         $options = $container->get($name);
 
+        // @phpstan-ignore argument.type
         return $mapper->map($serviceName, Source::array($options)->camelCaseKeys());
     }
 
@@ -33,6 +34,7 @@ class ValinorConfigFactory
 
         $mapper = (new MapperBuilder())->allowSuperfluousKeys();
         if ($container->has(CacheInterface::class)) {
+            // @phpstan-ignore argument.type
             return $mapper = $mapper->withCache($container->get(CacheInterface::class))->mapper();
         }
 
