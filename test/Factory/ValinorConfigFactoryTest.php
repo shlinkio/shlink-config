@@ -68,6 +68,7 @@ class ValinorConfigFactoryTest extends TestCase
         ]]);
 
         $this->expectException(MappingError::class);
+        // @phpstan-ignore staticMethod.notFound
         ValinorConfigFactory::config($serviceManager, FooModel::class);
     }
 

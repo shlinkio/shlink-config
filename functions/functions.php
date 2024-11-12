@@ -91,6 +91,7 @@ function putNotYetDefinedEnv(string $key, mixed $value): void
         return;
     }
 
+    // @phpstan-ignore argument.type
     $formattedValue = formatEnvVarValueOrNull($value);
     if ($formattedValue === null) {
         return;

@@ -22,7 +22,8 @@
     "require-dev": {
         "cuyz/valinor": "^1.12",
         "devster/ubench": "^2.1",
-        "phpstan/phpstan": "^1.12",
+        "phpstan/phpstan": "^2.0",
+        "phpstan/phpstan-phpunit": "^2.0",
         "phpunit/phpunit": "^11.4",
         "psr/simple-cache": "^2.0",
         "roave/security-advisories": "dev-master",
