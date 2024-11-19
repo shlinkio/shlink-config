@@ -22,8 +22,10 @@ use const PHP_SAPI;
 
 function loadConfigFromGlob(string $globPattern): array
 {
+    $files = Glob::glob($globPattern, Glob::GLOB_BRACE);
+
     /** @var array $config */
-    $config = Factory::fromFiles(Glob::glob($globPattern, Glob::GLOB_BRACE));
+    $config = Factory::fromFiles($files);
     return $config;
 }
 
