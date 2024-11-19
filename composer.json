@@ -13,8 +13,8 @@
     ],
     "require": {
         "php": "^8.2",
-        "laminas/laminas-config": "^3.9",
-        "laminas/laminas-servicemanager": "^4.2 || ^3.22"
+        "laminas/laminas-servicemanager": "^4.2 || ^3.22",
+        "laminas/laminas-stdlib": "^3.20"
     },
     "suggest": {
         "cuyz/valinor": "To be able to use ValinorConfigFactory"

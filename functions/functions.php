@@ -4,9 +4,10 @@ declare(strict_types=1);
 
 namespace Shlinkio\Shlink\Config;
 
-use Laminas\Config\Factory;
+use Laminas\Stdlib\ArrayUtils;
 use Laminas\Stdlib\Glob;
 
+use function file_exists;
 use function getenv;
 use function implode;
 use function in_array;
@@ -15,6 +16,7 @@ use function is_numeric;
 use function is_scalar;
 use function putenv;
 use function sprintf;
+use function str_ends_with;
 use function strtolower;
 use function trim;
 
@@ -22,8 +24,17 @@ use const PHP_SAPI;
 
 function loadConfigFromGlob(string $globPattern): array
 {
-    /** @var array $config */
-    $config = Factory::fromFiles(Glob::glob($globPattern, Glob::GLOB_BRACE));
+    $config = [];
+    $files = Glob::glob($globPattern, Glob::GLOB_BRACE);
+
+    foreach ($files as $file) {
+        if (! str_ends_with($file, '.php') || ! file_exists($file)) {
+            continue;
+        }
+
+        $config = ArrayUtils::merge($config, include $file);
+    }
+
     return $config;
 }
 
