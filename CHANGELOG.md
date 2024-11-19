@@ -16,7 +16,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com), and this 
 * *Nothing*
 
 ### Removed
-* *Nothing*
+* Remove dependency on `laminas/laminas-config`.
 
 ### Fixed
 * *Nothing*
