@@ -12,23 +12,20 @@
         }
     ],
     "require": {
-        "php": "^8.2",
+        "php": "^8.3",
         "laminas/laminas-servicemanager": "^4.2 || ^3.22",
         "laminas/laminas-stdlib": "^3.20"
     },
-    "suggest": {
-        "cuyz/valinor": "To be able to use ValinorConfigFactory"
-    },
     "require-dev": {
-        "cuyz/valinor": "^1.12",
+        "cuyz/valinor": "^1.14",
         "devster/ubench": "^2.1",
-        "phpstan/phpstan": "^2.0",
+        "phpstan/phpstan": "^2.1",
         "phpstan/phpstan-phpunit": "^2.0",
-        "phpunit/phpunit": "^11.4",
+        "phpunit/phpunit": "^11.5",
         "psr/simple-cache": "^2.0",
         "roave/security-advisories": "dev-master",
         "shlinkio/php-coding-standard": "~2.4.0",
-        "symfony/var-dumper": "^7.1"
+        "symfony/var-dumper": "^7.2"
     },
     "autoload": {
         "psr-4": {
