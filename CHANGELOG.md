@@ -4,12 +4,12 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com), and this project adheres to [Semantic Versioning](https://semver.org).
 
-## [Unreleased]
+## [4.1.0] - 2026-02-08
 ### Added
 * *Nothing*
 
 ### Changed
-* Update to PHPUnit 12
+* Update to PHPUnit 13
 
 ### Deprecated
 * *Nothing*

@@ -13,7 +13,7 @@
     ],
     "require": {
         "php": "^8.4",
-        "laminas/laminas-servicemanager": "^4.4 || ^3.22",
+        "laminas/laminas-servicemanager": "^4.5 || ^3.24",
         "laminas/laminas-stdlib": "^3.21"
     },
     "require-dev": {
@@ -21,7 +21,7 @@
         "devster/ubench": "^2.1",
         "phpstan/phpstan": "^2.1",
         "phpstan/phpstan-phpunit": "^2.0",
-        "phpunit/phpunit": "^12.5",
+        "phpunit/phpunit": "^13.0",
         "psr/simple-cache": "^2.0",
         "roave/security-advisories": "dev-master",
         "shlinkio/php-coding-standard": "~2.5.0",
