@@ -23,10 +23,13 @@ class ConfigProviderTest extends TestCase
     {
         $config = ($this->configProvider)();
         self::assertArrayHasKey('dependencies', $config);
-        self::assertEquals([
-            'abstract_factories' => [
-                DottedAccessConfigAbstractFactory::class,
+        self::assertEquals(
+            [
+                'abstract_factories' => [
+                    DottedAccessConfigAbstractFactory::class,
+                ],
             ],
-        ], $config['dependencies']);
+            $config['dependencies'],
+        );
     }
 }

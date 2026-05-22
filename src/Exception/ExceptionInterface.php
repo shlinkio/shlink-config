@@ -6,6 +6,4 @@ namespace Shlinkio\Shlink\Config\Exception;
 
 use Throwable;
 
-interface ExceptionInterface extends Throwable
-{
-}
+interface ExceptionInterface extends Throwable {}

@@ -16,16 +16,19 @@ class LoadConfigFromGlobTest extends TestCase
     public function expectedConfigIsProduced(): void
     {
         $result = loadConfigFromGlob(__DIR__ . '/../../test-resources/configs/*.{global,local}.php');
-        self::assertEquals([
-            'foo' => [
-                'something' => false,
-                'else' => 'bar',
+        self::assertEquals(
+            [
+                'foo' => [
+                    'something' => false,
+                    'else' => 'bar',
+                ],
+                'bar' => [
+                    'number' => 123,
+                    'array' => [1, 2, 3],
+                ],
             ],
-            'bar' => [
-                'number' => 123,
-                'array' => [1, 2, 3],
-            ],
-        ], $result);
+            $result,
+        );
     }
 
     #[Test]

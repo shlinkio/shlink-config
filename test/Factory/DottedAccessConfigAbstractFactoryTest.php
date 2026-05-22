@@ -66,14 +66,16 @@ class DottedAccessConfigAbstractFactoryTest extends TestCase
     {
         $a = new stdClass();
         $b = new stdClass();
-        $sm = new ServiceManager(['services' => [
-            'foo' => [
-                'bar' => [
-                    'baz' => $a,
-                    'biz' => $b,
+        $sm = new ServiceManager([
+            'services' => [
+                'foo' => [
+                    'bar' => [
+                        'baz' => $a,
+                        'biz' => $b,
+                    ],
                 ],
             ],
-        ]]);
+        ]);
 
         self::assertSame($a, $this->factory->__invoke($sm, 'foo.bar.baz'));
         self::assertSame($b, $this->factory->__invoke($sm, 'foo.bar.biz'));
@@ -87,10 +89,12 @@ class DottedAccessConfigAbstractFactoryTest extends TestCase
             'The key "baz" provided in the dotted notation could not be found in the array service',
         );
 
-        $this->factory->__invoke(new ServiceManager(['services' => [
-            'foo' => [
-                'bar' => ['something' => 123],
+        $this->factory->__invoke(new ServiceManager([
+            'services' => [
+                'foo' => [
+                    'bar' => ['something' => 123],
+                ],
             ],
-        ]]), 'foo.bar.baz');
+        ]), 'foo.bar.baz');
     }
 }
