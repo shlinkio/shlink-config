@@ -24,7 +24,6 @@
         "phpstan/phpstan-phpunit": "^2.0",
         "phpunit/phpunit": "^13.0",
         "psr/simple-cache": "^2.0",
-        "roave/security-advisories": "dev-master",
         "symfony/var-dumper": "^8.0"
     },
     "autoload": {
