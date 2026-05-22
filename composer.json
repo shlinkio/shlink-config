@@ -24,6 +24,7 @@
         "phpstan/phpstan-phpunit": "^2.0",
         "phpunit/phpunit": "^13.0",
         "psr/simple-cache": "^2.0",
+        "shlinkio/shlink-mago-config": "^1.0",
         "symfony/var-dumper": "^8.0"
     },
     "autoload": {
