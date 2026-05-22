@@ -14,6 +14,5 @@ final class FooModel
         public readonly array $listOfStuff = [],
         /** @var float[] */
         public readonly array $listOfNumbers = [],
-    ) {
-    }
+    ) {}
 }

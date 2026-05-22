@@ -17,6 +17,7 @@
         "laminas/laminas-stdlib": "^3.21"
     },
     "require-dev": {
+        "carthage-software/mago": "^1.28",
         "cuyz/valinor": "^2.3.1",
         "devster/ubench": "^2.1",
         "phpstan/phpstan": "^2.1",
@@ -24,7 +25,6 @@
         "phpunit/phpunit": "^13.0",
         "psr/simple-cache": "^2.0",
         "roave/security-advisories": "dev-master",
-        "shlinkio/php-coding-standard": "~2.5.0",
         "symfony/var-dumper": "^8.0"
     },
     "autoload": {
@@ -46,8 +46,12 @@
             "@stan",
             "@test:ci"
         ],
-        "cs": "phpcs",
-        "cs:fix": "phpcbf",
+        "lint": "mago lint",
+        "lint:fix": "mago lint --fix",
+        "format": "mago format",
+        "format:check": "mago format --check",
+        "cs": ["@lint", "@format:check"],
+        "cs:fix": ["@lint:fix", "@format"],
         "stan": "phpstan analyse",
         "test": "phpunit --order-by=random --testdox --testdox-summary",
         "test:ci": "XDEBUG_MODE=coverage composer test -- --coverage-clover=build/clover.xml --coverage-xml=build/coverage-xml",

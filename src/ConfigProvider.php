@@ -9,13 +9,11 @@ class ConfigProvider
     public function __invoke(): array
     {
         return [
-
             'dependencies' => [
                 'abstract_factories' => [
                     Factory\DottedAccessConfigAbstractFactory::class,
                 ],
             ],
-
         ];
     }
 }

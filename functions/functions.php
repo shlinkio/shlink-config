@@ -28,7 +28,7 @@ function loadConfigFromGlob(string $globPattern): array
     $files = Glob::glob($globPattern, Glob::GLOB_BRACE);
 
     foreach ($files as $file) {
-        if (! str_ends_with($file, '.php') || ! file_exists($file)) {
+        if (!str_ends_with($file, '.php') || !file_exists($file)) {
             continue;
         }
 
@@ -62,15 +62,19 @@ function parseEnvVar(string $value): string|int|bool|null
 function formatEnvVarValueOrNull(string|int|bool|array|null $value): string|null
 {
     $isArray = is_array($value);
-    if (! $isArray && ! is_scalar($value)) {
+    if (!$isArray && !is_scalar($value)) {
         return null;
     }
 
-    return $isArray ? implode(',', $value) : match ($value) {
-        true => 'true',
-        false => 'false',
-        default => (string) $value,
-    };
+    return (
+        $isArray
+            ? implode(',', $value)
+            : match ($value) {
+                true => 'true',
+                false => 'false',
+                default => (string) $value,
+            }
+    );
 }
 
 /**
@@ -88,7 +92,7 @@ function loadEnvVarsFromConfig(string $configPath, array|null $allowedEnvVars = 
 {
     $config = loadConfigFromGlob($configPath);
     foreach ($config as $envVar => $value) {
-        if ($allowedEnvVars !== null && ! in_array($envVar, $allowedEnvVars, true)) {
+        if ($allowedEnvVars !== null && !in_array($envVar, $allowedEnvVars, true)) {
             continue;
         }
 

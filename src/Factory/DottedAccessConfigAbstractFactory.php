@@ -33,11 +33,11 @@ class DottedAccessConfigAbstractFactory implements AbstractFactoryInterface
      * @todo Add native type when servicemanager 3 is no longer supported
      */
     // phpcs:ignore
-    public function __invoke(ContainerInterface $container, $requestedName, ?array $options = null): mixed
+    public function __invoke(ContainerInterface $container, $requestedName, array|null $options = null): mixed
     {
         $parts = explode('.', $requestedName);
         $serviceName = array_shift($parts);
-        if (! $container->has($serviceName)) {
+        if (!$container->has($serviceName)) {
             throw new ServiceNotCreatedException(sprintf(
                 'Defined service "%s" could not be found in container after resolving dotted expression "%s".',
                 $serviceName,
@@ -46,7 +46,7 @@ class DottedAccessConfigAbstractFactory implements AbstractFactoryInterface
         }
 
         $array = $container->get($serviceName);
-        if (! is_array($array) && ! $array instanceof ArrayAccess) {
+        if (!is_array($array) && !$array instanceof ArrayAccess) {
             throw new ServiceNotCreatedException(sprintf(
                 'Defined service "%s" does not return an array or ArrayAccess after resolving dotted expression "%s".',
                 $serviceName,
@@ -66,7 +66,7 @@ class DottedAccessConfigAbstractFactory implements AbstractFactoryInterface
         $key = array_shift($keys);
 
         // As soon as one of the provided keys is not found, throw an exception
-        if (! $this->keyExists($key, $array)) {
+        if (!$this->keyExists($key, $array)) {
             throw new InvalidArgumentException(sprintf(
                 'The key "%s" provided in the dotted notation could not be found in the array service',
                 $key,
@@ -74,7 +74,7 @@ class DottedAccessConfigAbstractFactory implements AbstractFactoryInterface
         }
 
         $value = $array[$key];
-        if (! empty($keys) && (is_array($value) || $value instanceof ArrayAccess)) {
+        if (!empty($keys) && (is_array($value) || $value instanceof ArrayAccess)) {
             $value = $this->readKeysFromArray($keys, $value);
         }
 
