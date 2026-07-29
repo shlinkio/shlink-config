@@ -1,0 +1,85 @@
+variant = "loose"
+
+[[issues]]
+file = "functions/functions.php"
+code = "less-specific-argument"
+message = 'Argument type mismatch for argument #1 of `Shlinkio\Shlink\Config\putNotYetDefinedEnv`: expected `string`, but provided type `array-key` is less specific.'
+count = 1
+
+[[issues]]
+file = "functions/functions.php"
+code = "mixed-argument"
+message = 'Invalid argument type for argument #1 of `Shlinkio\Shlink\Config\formatEnvVarValueOrNull`: expected `array<array-key, int>|array<array-key, string>|bool|int|null|string`, but found `mixed`.'
+count = 1
+
+[[issues]]
+file = "functions/functions.php"
+code = "mixed-argument"
+message = "Invalid argument type for argument #1 of `file_exists`: expected `string`, but found `mixed`."
+count = 1
+
+[[issues]]
+file = "functions/functions.php"
+code = "mixed-argument"
+message = "Invalid argument type for argument #1 of `str_ends_with`: expected `string`, but found `mixed`."
+count = 1
+
+[[issues]]
+file = "functions/functions.php"
+code = "mixed-argument"
+message = 'Invalid argument type for argument #2 of `Laminas\Stdlib\ArrayUtils::merge`: expected `array<array-key, mixed>`, but found `mixed`.'
+count = 1
+
+[[issues]]
+file = "functions/functions.php"
+code = "mixed-argument"
+message = "The first value for `include` is too general."
+count = 1
+
+[[issues]]
+file = "functions/functions.php"
+code = "mixed-assignment"
+message = "Assigning `mixed` type to a variable may lead to unexpected behavior."
+count = 2
+
+[[issues]]
+file = "functions/functions.php"
+code = "possibly-invalid-argument"
+message = "Possible argument type mismatch for argument #2 of `implode`: expected `array<array-key, Stringable|null|scalar>|null`, but possibly received `array<array-key, int>|array<array-key, string>|bool|int|null|string`."
+count = 1
+
+[[issues]]
+file = "src/Factory/DottedAccessConfigAbstractFactory.php"
+code = "less-specific-nested-argument-type"
+message = 'Argument type mismatch for argument #2 of `Shlinkio\Shlink\Config\Factory\DottedAccessConfigAbstractFactory::readKeysFromArray`: expected `ArrayAccess<string, mixed>|array<array-key, mixed>`, but provided type `ArrayAccess|array<array-key, mixed>` is less specific.'
+count = 2
+
+[[issues]]
+file = "src/Factory/DottedAccessConfigAbstractFactory.php"
+code = "mixed-argument"
+message = 'Invalid argument type for argument #1 of `Shlinkio\Shlink\Config\Factory\DottedAccessConfigAbstractFactory::keyExists`: expected `string`, but found `mixed`.'
+count = 1
+
+[[issues]]
+file = "src/Factory/DottedAccessConfigAbstractFactory.php"
+code = "mixed-argument"
+message = "Invalid argument type for argument #2 of `sprintf`: expected `Stringable|null|scalar`, but found `mixed`."
+count = 1
+
+[[issues]]
+file = "src/Factory/DottedAccessConfigAbstractFactory.php"
+code = "mixed-assignment"
+message = "Assigning `mixed` type to a variable may lead to unexpected behavior."
+count = 4
+
+[[issues]]
+file = "test/Functions/FormatEnvVarValueTest.php"
+code = "less-specific-nested-argument-type"
+message = 'Argument type mismatch for argument #1 of `Shlinkio\Shlink\Config\formatEnvVarValueOrNull`: expected `array<array-key, int>|array<array-key, string>|bool|int|null|string`, but provided type `array<array-key, mixed>|bool|int|null|string` is less specific.'
+count = 1
+
+[[issues]]
+file = "test/Functions/FormatEnvVarValueTest.php"
+code = "less-specific-nested-argument-type"
+message = 'Argument type mismatch for argument #1 of `Shlinkio\Shlink\Config\formatEnvVarValue`: expected `array<array-key, int>|array<array-key, string>|bool|int|null|string`, but provided type `array<array-key, mixed>|bool|int|null|string` is less specific.'
+count = 1

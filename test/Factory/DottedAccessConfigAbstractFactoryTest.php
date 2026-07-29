@@ -36,7 +36,7 @@ class DottedAccessConfigAbstractFactoryTest extends TestCase
     public function throwsExceptionWhenFirstPartOfTheServiceIsNotRegistered(): void
     {
         $this->expectException(ServiceNotCreatedException::class);
-        $this->expectExceptionMessage(
+        $this->expectExceptionMessageIsOrContains(
             'Defined service "foo" could not be found in container after resolving dotted expression "foo.bar"',
         );
 
@@ -52,7 +52,7 @@ class DottedAccessConfigAbstractFactoryTest extends TestCase
     public function throwsExceptionWhenFirstPartOfTheServiceDoesNotResultInAnArray(mixed $value): void
     {
         $this->expectException(ServiceNotCreatedException::class);
-        $this->expectExceptionMessage(
+        $this->expectExceptionMessageIs(
             'Defined service "a" does not return an array or ArrayAccess after resolving dotted expression "a.bar".',
         );
 
@@ -85,7 +85,7 @@ class DottedAccessConfigAbstractFactoryTest extends TestCase
     public function exceptionIsThrownIfAnyStepCannotBeResolved(): void
     {
         $this->expectException(InvalidArgumentException::class);
-        $this->expectExceptionMessage(
+        $this->expectExceptionMessageIs(
             'The key "baz" provided in the dotted notation could not be found in the array service',
         );
 
