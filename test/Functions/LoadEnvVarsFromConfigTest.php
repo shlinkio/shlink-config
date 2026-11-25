@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace ShlinkioTest\Shlink\Config\Functions;
 
+use Override;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 
@@ -23,11 +24,13 @@ class LoadEnvVarsFromConfigTest extends TestCase
         'ENV_ARRAY',
     ];
 
+    #[Override]
     protected function setUp(): void
     {
         putenv('OVERWRITTEN_ENV=already_exists');
     }
 
+    #[Override]
     protected function tearDown(): void
     {
         foreach (self::VALID_ENV_VARS as $envVar) {

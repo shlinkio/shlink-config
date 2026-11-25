@@ -6,6 +6,7 @@ namespace ShlinkioTest\Shlink\Config\Factory;
 
 use Laminas\ServiceManager\Exception\ServiceNotCreatedException;
 use Laminas\ServiceManager\ServiceManager;
+use Override;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\Attributes\TestWith;
 use PHPUnit\Framework\TestCase;
@@ -17,6 +18,7 @@ class DottedAccessConfigAbstractFactoryTest extends TestCase
 {
     private DottedAccessConfigAbstractFactory $factory;
 
+    #[Override]
     public function setUp(): void
     {
         $this->factory = new DottedAccessConfigAbstractFactory();

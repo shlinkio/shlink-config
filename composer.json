@@ -17,7 +17,7 @@
         "laminas/laminas-stdlib": "^3.21"
     },
     "require-dev": {
-        "carthage-software/mago": "^1.45",
+        "carthage-software/mago": "~1.61.0",
         "cuyz/valinor": "^2.5",
         "devster/ubench": "^2.1",
         "phpunit/phpunit": "^13.2",

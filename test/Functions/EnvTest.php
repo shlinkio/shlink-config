@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace ShlinkioTest\Shlink\Config\Functions;
 
+use Override;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 
@@ -12,6 +13,7 @@ use function Shlinkio\Shlink\Config\env;
 
 class EnvTest extends TestCase
 {
+    #[Override]
     public static function setUpBeforeClass(): void
     {
         putenv('TRUE_VALUE=true');
@@ -30,6 +32,7 @@ class EnvTest extends TestCase
         putenv('NUMERIC_VALUE=58.68');
     }
 
+    #[Override]
     public static function tearDownAfterClass(): void
     {
         putenv('TRUE_VALUE');
