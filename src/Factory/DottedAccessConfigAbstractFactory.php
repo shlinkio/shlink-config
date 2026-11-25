@@ -7,6 +7,7 @@ namespace Shlinkio\Shlink\Config\Factory;
 use ArrayAccess;
 use Laminas\ServiceManager\Exception\ServiceNotCreatedException;
 use Laminas\ServiceManager\Factory\AbstractFactoryInterface;
+use Override;
 use Psr\Container\ContainerInterface;
 use Shlinkio\Shlink\Config\Exception\InvalidArgumentException;
 
@@ -23,6 +24,7 @@ class DottedAccessConfigAbstractFactory implements AbstractFactoryInterface
      * @param string $requestedName
      * @todo Add native type when servicemanager 3 is no longer supported
      */
+    #[Override]
     public function canCreate(ContainerInterface $container, $requestedName): bool // phpcs:ignore
     {
         return str_contains($requestedName, '.');
@@ -33,6 +35,7 @@ class DottedAccessConfigAbstractFactory implements AbstractFactoryInterface
      * @todo Add native type when servicemanager 3 is no longer supported
      */
     // phpcs:ignore
+    #[Override]
     public function __invoke(ContainerInterface $container, $requestedName, array|null $options = null): mixed
     {
         $parts = explode('.', $requestedName);
